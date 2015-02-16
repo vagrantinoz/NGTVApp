@@ -17,4 +17,8 @@ class BoardDetail : NSObject {
     var permLink : NSString?
     var content : NSString?
     var recommendCnt : NSString?
+    
+    override init() {
+        super.init()
+    }
 }

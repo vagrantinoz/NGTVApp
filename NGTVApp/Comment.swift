@@ -17,4 +17,8 @@ class Comment: NSObject {
     var recommentCnt : NSString?
     var content : NSString?
     var date : NSString?
+    
+    override init() {
+        super.init()
+    }
 }

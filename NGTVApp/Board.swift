@@ -21,4 +21,8 @@ class Board : NSObject {
     var wrtTime : NSString?
     var viewCnt : NSString?
     var recommendCnt : NSString?
+    
+    override init() {
+        super.init()
+    }
 }
