@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E7105DDC1A93C01B00DA862D /* NGTVMainParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7105DDB1A93C01B00DA862D /* NGTVMainParser.swift */; };
+		E7105DDE1A93C08400DA862D /* BoardTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7105DDD1A93C08400DA862D /* BoardTitle.swift */; };
+		E7105DE61A93C66200DA862D /* UITitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7105DE51A93C66200DA862D /* UITitleViewController.swift */; };
+		E7105DE81A93CA2000DA862D /* UITitleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7105DE71A93CA2000DA862D /* UITitleViewCell.swift */; };
 		E7105F431A90AFD300C11F89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7105F421A90AFD300C11F89 /* AppDelegate.swift */; };
 		E7105F451A90AFD300C11F89 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7105F441A90AFD300C11F89 /* FirstViewController.swift */; };
 		E7105F471A90AFD300C11F89 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7105F461A90AFD300C11F89 /* SecondViewController.swift */; };
 		E7105F4A1A90AFD300C11F89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7105F481A90AFD300C11F89 /* Main.storyboard */; };
 		E7105F4C1A90AFD300C11F89 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7105F4B1A90AFD300C11F89 /* Images.xcassets */; };
-		E7105F4F1A90AFD300C11F89 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7105F4D1A90AFD300C11F89 /* LaunchScreen.xib */; };
 		E7105F5B1A90AFD300C11F89 /* NGTVAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7105F5A1A90AFD300C11F89 /* NGTVAppTests.swift */; };
 		E7105F6C1A90B0EA00C11F89 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = E7105F671A90B0EA00C11F89 /* TFHpple.m */; };
 		E7105F6D1A90B0EA00C11F89 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E7105F691A90B0EA00C11F89 /* TFHppleElement.m */; };
@@ -22,6 +25,9 @@
 		E764D8621A90BE6F0014CFFE /* BoardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E764D8611A90BE6F0014CFFE /* BoardDetail.swift */; };
 		E764D8641A90BFCB0014CFFE /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E764D8631A90BFCB0014CFFE /* Comment.swift */; };
 		E764D8661A90C0E20014CFFE /* BoardParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E764D8651A90C0E20014CFFE /* BoardParser.swift */; };
+		E77764E11A948BE100358302 /* UIBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764E01A948BE100358302 /* UIBoardViewController.swift */; };
+		E77764E31A94907A00358302 /* UIBoardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764E21A94907A00358302 /* UIBoardViewCell.swift */; };
+		E77764E51A9493F500358302 /* UIBoardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764E41A9493F500358302 /* UIBoardDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E7105DDB1A93C01B00DA862D /* NGTVMainParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NGTVMainParser.swift; sourceTree = "<group>"; };
+		E7105DDD1A93C08400DA862D /* BoardTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTitle.swift; sourceTree = "<group>"; };
+		E7105DE51A93C66200DA862D /* UITitleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITitleViewController.swift; sourceTree = "<group>"; };
+		E7105DE71A93CA2000DA862D /* UITitleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITitleViewCell.swift; sourceTree = "<group>"; };
 		E7105F3D1A90AFD300C11F89 /* NGTVApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NGTVApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7105F411A90AFD300C11F89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7105F421A90AFD300C11F89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,7 +52,6 @@
 		E7105F461A90AFD300C11F89 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		E7105F491A90AFD300C11F89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E7105F4B1A90AFD300C11F89 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E7105F4E1A90AFD300C11F89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E7105F541A90AFD300C11F89 /* NGTVAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NGTVAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7105F591A90AFD300C11F89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7105F5A1A90AFD300C11F89 /* NGTVAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NGTVAppTests.swift; sourceTree = "<group>"; };
@@ -58,6 +67,9 @@
 		E764D8611A90BE6F0014CFFE /* BoardDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardDetail.swift; sourceTree = "<group>"; };
 		E764D8631A90BFCB0014CFFE /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		E764D8651A90C0E20014CFFE /* BoardParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardParser.swift; sourceTree = "<group>"; };
+		E77764E01A948BE100358302 /* UIBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBoardViewController.swift; sourceTree = "<group>"; };
+		E77764E21A94907A00358302 /* UIBoardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBoardViewCell.swift; sourceTree = "<group>"; };
+		E77764E41A9493F500358302 /* UIBoardDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBoardDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +91,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E7105DDF1A93C58600DA862D /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				E7105DE01A93C5A100DA862D /* tableViewCell */,
+				E7105DE51A93C66200DA862D /* UITitleViewController.swift */,
+				E77764E01A948BE100358302 /* UIBoardViewController.swift */,
+				E77764E41A9493F500358302 /* UIBoardDetailViewController.swift */,
+			);
+			name = viewController;
+			sourceTree = "<group>";
+		};
+		E7105DE01A93C5A100DA862D /* tableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E7105DE71A93CA2000DA862D /* UITitleViewCell.swift */,
+				E77764E21A94907A00358302 /* UIBoardViewCell.swift */,
+			);
+			name = tableViewCell;
+			sourceTree = "<group>";
+		};
 		E7105F341A90AFD300C11F89 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +133,7 @@
 		E7105F3F1A90AFD300C11F89 /* NGTVApp */ = {
 			isa = PBXGroup;
 			children = (
+				E7105DDF1A93C58600DA862D /* viewController */,
 				E764D8601A90BE5A0014CFFE /* data */,
 				E7105F741A90B7F100C11F89 /* parser */,
 				E7105F651A90B0E900C11F89 /* NGTVApp-Bridging-Header.h */,
@@ -110,7 +143,6 @@
 				E7105F461A90AFD300C11F89 /* SecondViewController.swift */,
 				E7105F481A90AFD300C11F89 /* Main.storyboard */,
 				E7105F4B1A90AFD300C11F89 /* Images.xcassets */,
-				E7105F4D1A90AFD300C11F89 /* LaunchScreen.xib */,
 				E7105F401A90AFD300C11F89 /* Supporting Files */,
 			);
 			path = NGTVApp;
@@ -158,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				E764D8651A90C0E20014CFFE /* BoardParser.swift */,
+				E7105DDB1A93C01B00DA862D /* NGTVMainParser.swift */,
 			);
 			name = parser;
 			sourceTree = "<group>";
@@ -168,6 +201,7 @@
 				E764D85E1A90B8FB0014CFFE /* Board.swift */,
 				E764D8611A90BE6F0014CFFE /* BoardDetail.swift */,
 				E764D8631A90BFCB0014CFFE /* Comment.swift */,
+				E7105DDD1A93C08400DA862D /* BoardTitle.swift */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -253,7 +287,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7105F4A1A90AFD300C11F89 /* Main.storyboard in Resources */,
-				E7105F4F1A90AFD300C11F89 /* LaunchScreen.xib in Resources */,
 				E7105F4C1A90AFD300C11F89 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,14 +306,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7105F471A90AFD300C11F89 /* SecondViewController.swift in Sources */,
+				E77764E31A94907A00358302 /* UIBoardViewCell.swift in Sources */,
+				E7105DE81A93CA2000DA862D /* UITitleViewCell.swift in Sources */,
 				E7105F431A90AFD300C11F89 /* AppDelegate.swift in Sources */,
 				E764D85F1A90B8FC0014CFFE /* Board.swift in Sources */,
 				E764D8661A90C0E20014CFFE /* BoardParser.swift in Sources */,
 				E7105F451A90AFD300C11F89 /* FirstViewController.swift in Sources */,
 				E7105F6C1A90B0EA00C11F89 /* TFHpple.m in Sources */,
+				E7105DDC1A93C01B00DA862D /* NGTVMainParser.swift in Sources */,
 				E7105F6E1A90B0EA00C11F89 /* XPathQuery.m in Sources */,
 				E7105F6D1A90B0EA00C11F89 /* TFHppleElement.m in Sources */,
+				E7105DE61A93C66200DA862D /* UITitleViewController.swift in Sources */,
+				E7105DDE1A93C08400DA862D /* BoardTitle.swift in Sources */,
 				E764D8641A90BFCB0014CFFE /* Comment.swift in Sources */,
+				E77764E51A9493F500358302 /* UIBoardDetailViewController.swift in Sources */,
+				E77764E11A948BE100358302 /* UIBoardViewController.swift in Sources */,
 				E764D8621A90BE6F0014CFFE /* BoardDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,14 +350,6 @@
 				E7105F491A90AFD300C11F89 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		E7105F4D1A90AFD300C11F89 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E7105F4E1A90AFD300C11F89 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -416,6 +448,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = NGTVApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NGTVApp/NGTVApp-Bridging-Header.h";
@@ -429,6 +462,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = NGTVApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NGTVApp/NGTVApp-Bridging-Header.h";
