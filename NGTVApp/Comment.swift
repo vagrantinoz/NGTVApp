@@ -6,9 +6,9 @@
 //  Copyright (c) 2015년 lunafei. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class Comment: NSObject {
+class Comment: NSObject, Printable {
     var bestYN : NSString?
     var profileImg: NSString?
     var levelImg : NSString?
@@ -20,5 +20,9 @@ class Comment: NSObject {
     
     override init() {
         super.init()
+    }
+    
+    override var description: String {
+        return "bestYN:\(bestYN), profileImg:\(profileImg), levelImg:\(levelImg), level:\(level), nick:\(nick), recommentCnt:\(recommentCnt), date:\(date)\n\(content)\n"
     }
 }

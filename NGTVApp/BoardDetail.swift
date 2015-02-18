@@ -6,9 +6,9 @@
 //  Copyright (c) 2015년 lunafei. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class BoardDetail : NSObject {
+class BoardDetail : NSObject, Printable {
     var title : NSString?
     var date : NSString?
     var level : NSString?
@@ -20,5 +20,9 @@ class BoardDetail : NSObject {
     
     override init() {
         super.init()
+    }
+    
+    override var description: String {
+        return "title:\(title), date:\(date), level:\(level), levelImg:\(levelImg), nick:\(nick), permLink:\(permLink), recommendCnt:\(recommendCnt)\n\(content)"
     }
 }

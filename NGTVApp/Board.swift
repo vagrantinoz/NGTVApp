@@ -6,9 +6,9 @@
 //  Copyright (c) 2015년 lunafei. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class Board : NSObject {
+class Board : NSObject, Printable {
     var noticeYN : NSString?
     var noticeImgSrc : NSString?
     var number : NSString?
@@ -24,5 +24,10 @@ class Board : NSObject {
     
     override init() {
         super.init()
+    }
+    
+    override var description: String {
+        return "noticeYN:\(noticeYN), noticeImgSrc:\(noticeImgSrc), number:\(number), link:\(link), " +
+            "levelImg:\(levelImg), level:\(level), nick:\(nick), title:\(title), commentCnt:\(commentCnt), wrtTime:\(wrtTime), viewCnt:\(viewCnt), recommendCnt:\(recommendCnt)\n"
     }
 }

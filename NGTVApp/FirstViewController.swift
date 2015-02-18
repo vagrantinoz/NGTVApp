@@ -14,7 +14,9 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let asdf = BoardParser.getBoardList("http://www.nicegame.tv/bbs/freeboard/list/", page: "1")
+//        let asdf :Array<Board> = BoardParser.boardList("http://www.nicegame.tv/bbs/freeboard/list/", page: "1")
+        
+//        let dddd = BoardParser.commentList("http://www.nicegame.tv/bbs/freeboard/view/529302?page=1")
     }
 
     override func didReceiveMemoryWarning() {
