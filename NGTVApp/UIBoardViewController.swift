@@ -10,7 +10,7 @@ import UIKit
 
 class UIBoardViewController : UITableViewController {
     var boardList = Array<Board>()
-    var page = 1
+    var page : Int = 1
     var link = ""
     var boardTitle = ""
     
@@ -18,6 +18,7 @@ class UIBoardViewController : UITableViewController {
         super.viewDidLoad()
         
         self.boardList = BoardParser.boardList(link, page: page)
+        self.tabBarController?.tabBar.hidden = false
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -35,19 +36,62 @@ class UIBoardViewController : UITableViewController {
         let row = indexPath.row
         
         cell.title.text = self.boardList[row].title
+        cell.nick.text = self.boardList[row].nick
+        
+        var img = UIImage(named: boardList[row].level!)
+        cell.levelImg.image = img
+        
+        if indexPath.row == boardList.count - 1 {
+            self.addBoardList(++page)
+        }
         
         return cell
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "BoardDetail" {
-            var detailCtrl: UIBoardDetailViewController = segue.destinationViewController as UIBoardDetailViewController
+//            var detailCtrl: UIBoardDetailViewController = segue.destinationViewController as UIBoardDetailViewController
+            
+            var detailCtrl : UIBoardDetailTableViewController = segue.destinationViewController as UIBoardDetailTableViewController
             
             let myIndexPath: NSIndexPath = self.tableView.indexPathForSelectedRow()!
             
             let row = myIndexPath.row
             
-            detailCtrl.link = self.boardList[row].link!
+            detailCtrl.board = boardList[row]
         }
     }
+    
+    func addBoardList(page: Int) {
+        var addList = BoardParser.boardList(link, page: page)
+        
+        var indexPathArr: NSArray = NSArray()
+        
+        let lastBoardNo = boardList[boardList.count - 1].number!.integerValue
+        
+//        self.tableView.beginUpdates()
+        for e in addList {
+            if e.noticeYN == "Y" {
+                continue
+            }
+            
+            if e.number!.integerValue > lastBoardNo {
+                continue
+            }
+            self.boardList.append(e)
+            let indexPath = NSIndexPath(forRow: boardList.count - 1, inSection: 0)
+            
+            indexPathArr.arrayByAddingObject(indexPath)
+            
+//            self.tableView.insertRowsAtIndexPaths(e, withRowAnimation: UITableViewRowAnimation.Automatic)
+            
+        }
+        
+//        self.tableView.insertRowsAtIndexPaths(indexPathArr, withRowAnimation: UITableViewRowAnimation.Automatic)
+
+//        self.tableView.endUpdates()
+        self.tableView.reloadData()
+    }
+    
+    
 }

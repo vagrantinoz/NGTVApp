@@ -9,4 +9,7 @@
 import UIKit
 class UIBoardViewCell : UITableViewCell {
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var levelImg: UIImageView!
+    @IBOutlet weak var nick: UILabel!
 }
+

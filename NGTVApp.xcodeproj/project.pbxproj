@@ -12,8 +12,6 @@
 		E7105DE61A93C66200DA862D /* UITitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7105DE51A93C66200DA862D /* UITitleViewController.swift */; };
 		E7105DE81A93CA2000DA862D /* UITitleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7105DE71A93CA2000DA862D /* UITitleViewCell.swift */; };
 		E7105F431A90AFD300C11F89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7105F421A90AFD300C11F89 /* AppDelegate.swift */; };
-		E7105F451A90AFD300C11F89 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7105F441A90AFD300C11F89 /* FirstViewController.swift */; };
-		E7105F471A90AFD300C11F89 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7105F461A90AFD300C11F89 /* SecondViewController.swift */; };
 		E7105F4A1A90AFD300C11F89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7105F481A90AFD300C11F89 /* Main.storyboard */; };
 		E7105F4C1A90AFD300C11F89 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7105F4B1A90AFD300C11F89 /* Images.xcassets */; };
 		E7105F5B1A90AFD300C11F89 /* NGTVAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7105F5A1A90AFD300C11F89 /* NGTVAppTests.swift */; };
@@ -21,6 +19,8 @@
 		E7105F6D1A90B0EA00C11F89 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E7105F691A90B0EA00C11F89 /* TFHppleElement.m */; };
 		E7105F6E1A90B0EA00C11F89 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = E7105F6B1A90B0EA00C11F89 /* XPathQuery.m */; };
 		E7105F701A90B10200C11F89 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7105F6F1A90B10200C11F89 /* libxml2.2.dylib */; };
+		E76492181A9B7B1E0065E1EE /* UILoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76492171A9B7B1E0065E1EE /* UILoginViewController.swift */; };
+		E764921B1A9C8E040065E1EE /* BaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E764921A1A9C8E040065E1EE /* BaseData.swift */; };
 		E764D85F1A90B8FC0014CFFE /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = E764D85E1A90B8FB0014CFFE /* Board.swift */; };
 		E764D8621A90BE6F0014CFFE /* BoardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E764D8611A90BE6F0014CFFE /* BoardDetail.swift */; };
 		E764D8641A90BFCB0014CFFE /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E764D8631A90BFCB0014CFFE /* Comment.swift */; };
@@ -28,6 +28,12 @@
 		E77764E11A948BE100358302 /* UIBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764E01A948BE100358302 /* UIBoardViewController.swift */; };
 		E77764E31A94907A00358302 /* UIBoardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764E21A94907A00358302 /* UIBoardViewCell.swift */; };
 		E77764E51A9493F500358302 /* UIBoardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764E41A9493F500358302 /* UIBoardDetailViewController.swift */; };
+		E77764E91A9701E700358302 /* UIBoardDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764E81A9701E700358302 /* UIBoardDetailTableViewController.swift */; };
+		E77764EB1A97025D00358302 /* UIBoardDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764EA1A97025D00358302 /* UIBoardDetailViewCell.swift */; };
+		E77764ED1A9713F800358302 /* UICommentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764EC1A9713F800358302 /* UICommentViewCell.swift */; };
+		E77764EF1A97140700358302 /* UICommentDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764EE1A97140700358302 /* UICommentDetailViewCell.swift */; };
+		E788E4661A9CD53A0072CDD3 /* NGTVNetworkCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E788E4651A9CD53A0072CDD3 /* NGTVNetworkCheck.swift */; };
+		E788E4681A9CD6AA0072CDD3 /* NGTVHTTPUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E788E4671A9CD6AA0072CDD3 /* NGTVHTTPUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,8 +54,6 @@
 		E7105F3D1A90AFD300C11F89 /* NGTVApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NGTVApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7105F411A90AFD300C11F89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7105F421A90AFD300C11F89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E7105F441A90AFD300C11F89 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		E7105F461A90AFD300C11F89 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		E7105F491A90AFD300C11F89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E7105F4B1A90AFD300C11F89 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E7105F541A90AFD300C11F89 /* NGTVAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NGTVAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +67,8 @@
 		E7105F6A1A90B0EA00C11F89 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
 		E7105F6B1A90B0EA00C11F89 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		E7105F6F1A90B10200C11F89 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		E76492171A9B7B1E0065E1EE /* UILoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILoginViewController.swift; sourceTree = "<group>"; };
+		E764921A1A9C8E040065E1EE /* BaseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseData.swift; sourceTree = "<group>"; };
 		E764D85E1A90B8FB0014CFFE /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		E764D8611A90BE6F0014CFFE /* BoardDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardDetail.swift; sourceTree = "<group>"; };
 		E764D8631A90BFCB0014CFFE /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -70,6 +76,12 @@
 		E77764E01A948BE100358302 /* UIBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBoardViewController.swift; sourceTree = "<group>"; };
 		E77764E21A94907A00358302 /* UIBoardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBoardViewCell.swift; sourceTree = "<group>"; };
 		E77764E41A9493F500358302 /* UIBoardDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBoardDetailViewController.swift; sourceTree = "<group>"; };
+		E77764E81A9701E700358302 /* UIBoardDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBoardDetailTableViewController.swift; sourceTree = "<group>"; };
+		E77764EA1A97025D00358302 /* UIBoardDetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBoardDetailViewCell.swift; sourceTree = "<group>"; };
+		E77764EC1A9713F800358302 /* UICommentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICommentViewCell.swift; sourceTree = "<group>"; };
+		E77764EE1A97140700358302 /* UICommentDetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICommentDetailViewCell.swift; sourceTree = "<group>"; };
+		E788E4651A9CD53A0072CDD3 /* NGTVNetworkCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NGTVNetworkCheck.swift; sourceTree = "<group>"; };
+		E788E4671A9CD6AA0072CDD3 /* NGTVHTTPUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NGTVHTTPUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +110,8 @@
 				E7105DE51A93C66200DA862D /* UITitleViewController.swift */,
 				E77764E01A948BE100358302 /* UIBoardViewController.swift */,
 				E77764E41A9493F500358302 /* UIBoardDetailViewController.swift */,
+				E77764E81A9701E700358302 /* UIBoardDetailTableViewController.swift */,
+				E76492171A9B7B1E0065E1EE /* UILoginViewController.swift */,
 			);
 			name = viewController;
 			sourceTree = "<group>";
@@ -107,6 +121,9 @@
 			children = (
 				E7105DE71A93CA2000DA862D /* UITitleViewCell.swift */,
 				E77764E21A94907A00358302 /* UIBoardViewCell.swift */,
+				E77764EA1A97025D00358302 /* UIBoardDetailViewCell.swift */,
+				E77764EC1A9713F800358302 /* UICommentViewCell.swift */,
+				E77764EE1A97140700358302 /* UICommentDetailViewCell.swift */,
 			);
 			name = tableViewCell;
 			sourceTree = "<group>";
@@ -133,14 +150,13 @@
 		E7105F3F1A90AFD300C11F89 /* NGTVApp */ = {
 			isa = PBXGroup;
 			children = (
+				E76492191A9C8DB90065E1EE /* util */,
 				E7105DDF1A93C58600DA862D /* viewController */,
 				E764D8601A90BE5A0014CFFE /* data */,
 				E7105F741A90B7F100C11F89 /* parser */,
 				E7105F651A90B0E900C11F89 /* NGTVApp-Bridging-Header.h */,
 				E7105F641A90B0D500C11F89 /* hpple */,
 				E7105F421A90AFD300C11F89 /* AppDelegate.swift */,
-				E7105F441A90AFD300C11F89 /* FirstViewController.swift */,
-				E7105F461A90AFD300C11F89 /* SecondViewController.swift */,
 				E7105F481A90AFD300C11F89 /* Main.storyboard */,
 				E7105F4B1A90AFD300C11F89 /* Images.xcassets */,
 				E7105F401A90AFD300C11F89 /* Supporting Files */,
@@ -193,6 +209,16 @@
 				E7105DDB1A93C01B00DA862D /* NGTVMainParser.swift */,
 			);
 			name = parser;
+			sourceTree = "<group>";
+		};
+		E76492191A9C8DB90065E1EE /* util */ = {
+			isa = PBXGroup;
+			children = (
+				E764921A1A9C8E040065E1EE /* BaseData.swift */,
+				E788E4651A9CD53A0072CDD3 /* NGTVNetworkCheck.swift */,
+				E788E4671A9CD6AA0072CDD3 /* NGTVHTTPUtil.swift */,
+			);
+			name = util;
 			sourceTree = "<group>";
 		};
 		E764D8601A90BE5A0014CFFE /* data */ = {
@@ -305,20 +331,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7105F471A90AFD300C11F89 /* SecondViewController.swift in Sources */,
+				E788E4681A9CD6AA0072CDD3 /* NGTVHTTPUtil.swift in Sources */,
 				E77764E31A94907A00358302 /* UIBoardViewCell.swift in Sources */,
+				E77764ED1A9713F800358302 /* UICommentViewCell.swift in Sources */,
+				E77764EB1A97025D00358302 /* UIBoardDetailViewCell.swift in Sources */,
 				E7105DE81A93CA2000DA862D /* UITitleViewCell.swift in Sources */,
+				E77764E91A9701E700358302 /* UIBoardDetailTableViewController.swift in Sources */,
 				E7105F431A90AFD300C11F89 /* AppDelegate.swift in Sources */,
 				E764D85F1A90B8FC0014CFFE /* Board.swift in Sources */,
 				E764D8661A90C0E20014CFFE /* BoardParser.swift in Sources */,
-				E7105F451A90AFD300C11F89 /* FirstViewController.swift in Sources */,
 				E7105F6C1A90B0EA00C11F89 /* TFHpple.m in Sources */,
+				E77764EF1A97140700358302 /* UICommentDetailViewCell.swift in Sources */,
 				E7105DDC1A93C01B00DA862D /* NGTVMainParser.swift in Sources */,
 				E7105F6E1A90B0EA00C11F89 /* XPathQuery.m in Sources */,
 				E7105F6D1A90B0EA00C11F89 /* TFHppleElement.m in Sources */,
 				E7105DE61A93C66200DA862D /* UITitleViewController.swift in Sources */,
+				E764921B1A9C8E040065E1EE /* BaseData.swift in Sources */,
+				E76492181A9B7B1E0065E1EE /* UILoginViewController.swift in Sources */,
 				E7105DDE1A93C08400DA862D /* BoardTitle.swift in Sources */,
 				E764D8641A90BFCB0014CFFE /* Comment.swift in Sources */,
+				E788E4661A9CD53A0072CDD3 /* NGTVNetworkCheck.swift in Sources */,
 				E77764E51A9493F500358302 /* UIBoardDetailViewController.swift in Sources */,
 				E77764E11A948BE100358302 /* UIBoardViewController.swift in Sources */,
 				E764D8621A90BE6F0014CFFE /* BoardDetail.swift in Sources */,

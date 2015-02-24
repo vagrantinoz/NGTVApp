@@ -19,8 +19,6 @@ public class BoardParser : NSObject {
     class func boardList(boardUrl:NSString, page:NSInteger) -> Array<Board> {
         var tmpList = Array<Board>()
         
-        let NICEGAMETV_ADDRESS = "http://www.nicegame.tv"
-        
         let url = NSURL(string: boardUrl + "/" + page.description)
         var error = NSErrorPointer()
         var htmlString = NSString(contentsOfURL: url!, encoding: NSUTF8StringEncoding, error: error)
@@ -45,7 +43,7 @@ public class BoardParser : NSObject {
                 tmp.number = tmp.number?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
             } else {
                 var src: NSString? = noticeImg[0].objectForKey("src")
-                tmp.noticeImgSrc = NICEGAMETV_ADDRESS + src!
+                tmp.noticeImgSrc = BaseData.sharedInstance.NICEGAMETV_ADDRESS + src!
                 tmp.noticeYN = "Y"
             }
             
@@ -57,7 +55,7 @@ public class BoardParser : NSObject {
 //            println(titleAnker[0].content)
 //            println(titleAnker[0].objectForKey("href"))
             tmp.title = titleAnker[0].content
-            tmp.link = NICEGAMETV_ADDRESS + titleAnker[0].objectForKey("href")
+            tmp.link = BaseData.sharedInstance.NICEGAMETV_ADDRESS + titleAnker[0].objectForKey("href")
             
             if countTag.count != 0 {
                 var commCnt: NSString = countTag[0].content.description
@@ -81,7 +79,7 @@ public class BoardParser : NSObject {
             
 //            println(level)
             
-            tmp.levelImg = NICEGAMETV_ADDRESS + levelImgSrc
+            tmp.levelImg = BaseData.sharedInstance.NICEGAMETV_ADDRESS + levelImgSrc
             tmp.level = level
             tmp.nick = nickTag[0].content.description.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
             
@@ -115,7 +113,6 @@ public class BoardParser : NSObject {
     
     class func boardDetail(dtlUrl: NSString) -> BoardDetail {
         let detail = BoardDetail()
-        let NICEGAMETV_ADDRESS = "http://www.nicegame.tv"
         
         let url = NSURL(string: dtlUrl)
         var error = NSErrorPointer()
@@ -140,7 +137,7 @@ public class BoardParser : NSObject {
         
         let levelImgTag = doc.searchWithXPathQuery("//div[@class='subinfo']//p[@class='writer']//img")
         if levelImgTag.count > 0 {
-            detail.levelImg = NICEGAMETV_ADDRESS + levelImgTag[0].objectForKey("src")
+            detail.levelImg = BaseData.sharedInstance.NICEGAMETV_ADDRESS + levelImgTag[0].objectForKey("src")
             
             let levelImgSrc: NSString = levelImgTag[0].objectForKey("src")
             let slashRange = levelImgSrc.rangeOfString("/", options: NSStringCompareOptions.BackwardsSearch)
@@ -157,8 +154,33 @@ public class BoardParser : NSObject {
         let permLink = doc.searchWithXPathQuery("//p[@class='permlink']")
         detail.permLink = permLink[0].content.description.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
+        // 기본 베이스 HTML 생성
+        
         let content = doc.searchWithXPathQuery("//div[@class='content']")
-        detail.content = content[0].raw
+        
+        var tmpContent = content[0].raw.description.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        
+        let baseHtml = "<!doctype html>" +
+                        "<html>" +
+                        "<head>" +
+                        "<meta name=\"viewport\" content=\"width=device-width, user-scalable=no\">" +
+                        "<meta http-equiv=\"Content-Type\" content=\"text/html charset=UTF-8\">" +
+                        "<style>" +
+                        "img {" +
+                        "width:100%;" +
+                        "}" +
+                        "embed {" +
+                        "width:100%;" +
+                        "height:240px;" +
+                        "}" +
+                        "</style>" +
+                        "</head>" +
+                        "<body>" +
+                        tmpContent +
+                        "</body>" +
+                    "</html>"
+        
+        detail.content = baseHtml
         
         let score = doc.searchWithXPathQuery("//p[@class='score']")
         if score.count > 0 {
@@ -170,7 +192,6 @@ public class BoardParser : NSObject {
     
     class func commentList(dtlUrl : NSString) -> Array<Comment> {
         var cmtList = Array<Comment>()
-        let NICEGAMETV_ADDRESS = "http://www.nicegame.tv"
         
         let url = NSURL(string: dtlUrl)
         var error = NSErrorPointer()
@@ -189,7 +210,7 @@ public class BoardParser : NSObject {
                 tmp.bestYN = "Y"
                 
                 let profileImgTag = e.searchWithXPathQuery("//img")
-                tmp.profileImg = NICEGAMETV_ADDRESS + profileImgTag[0].objectForKey("src")
+                tmp.profileImg = BaseData.sharedInstance.NICEGAMETV_ADDRESS + profileImgTag[0].objectForKey("src")
                 
                 let levelImgTag = e.searchWithXPathQuery("//p[@class='nick']//img")
                 let levelImgSrc: NSString = levelImgTag[0].objectForKey("src")
@@ -225,7 +246,7 @@ public class BoardParser : NSObject {
                 tmp.bestYN = "N"
                 
                 let profileImgTag = e.searchWithXPathQuery("//img")
-                tmp.profileImg = NICEGAMETV_ADDRESS + profileImgTag[0].objectForKey("src")
+                tmp.profileImg = BaseData.sharedInstance.NICEGAMETV_ADDRESS + profileImgTag[0].objectForKey("src")
                 
                 let levelImgTag = e.searchWithXPathQuery("//p[@class='nick']//img")
                 let levelImgSrc: NSString = levelImgTag[0].objectForKey("src")
