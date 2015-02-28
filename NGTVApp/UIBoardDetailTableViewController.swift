@@ -22,7 +22,26 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
         super.viewDidLoad()
         detail = BoardParser.boardDetail(board.link!)
         commentList = BoardParser.commentList(board.link!)
-        self.tabBarController?.tabBar.hidden = true
+//        self.tabBarController?.tabBar.hidden = true
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.backgroundColor = UIColor.purpleColor()
+        self.refreshControl?.tintColor = UIColor.whiteColor()
+        self.refreshControl?.addTarget(self, action: Selector("refreshData"), forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    func refreshData() {
+        detail = BoardParser.boardDetail(board.link!)
+        commentList = BoardParser.commentList(board.link!)
+        self.reloadData()
+    }
+    
+    func reloadData() {
+        self.tableView.reloadData()
+        
+        if (self.refreshControl? != nil) {
+            self.refreshControl?.endRefreshing()
+        }
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -144,7 +163,11 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
         return 400
     }
     
+    
+    
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
 
     }
+    
+    
 }

@@ -35,12 +35,10 @@ class UIBoardDetailViewController : UIViewController, UIWebViewDelegate {
         commentList = BoardParser.commentList(board.link!)
         
         content.loadHTMLString(boardDetail.content, baseURL: url)
-        
-        println(boardDetail)
     }
     
     func webViewDidStartLoad(webView: UIWebView) {
-        println("asdf")
+
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {

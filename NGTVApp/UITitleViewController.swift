@@ -16,6 +16,8 @@ class UITitleViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NGTVHTTPUtil.login("miharing", passwd: "wlgnsdja01")
         titleList = NGTVMainParser.communityBoardList()
     }
     
@@ -43,6 +45,8 @@ class UITitleViewController : UITableViewController {
             var boardCtrl: UIBoardViewController = segue.destinationViewController as UIBoardViewController
             
             var myIndexPath :NSIndexPath = self.tableView.indexPathForSelectedRow()!
+            
+            tableView.deselectRowAtIndexPath(myIndexPath, animated: false)
             
             var row = myIndexPath.row
             

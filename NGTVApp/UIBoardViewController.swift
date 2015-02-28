@@ -16,9 +16,35 @@ class UIBoardViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        BaseData.sharedInstance.refreshData()
+        let isLogin = NGTVNetworkCheck.isLogin()
+
+        if isLogin == false {
+            var alert: UIAlertView = UIAlertView(title: "로그인", message: "로그인에 실패하였습니다", delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
+        }
         
         self.boardList = BoardParser.boardList(link, page: page)
-        self.tabBarController?.tabBar.hidden = false
+//        self.tabBarController?.tabBar.hidden = false
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.backgroundColor = UIColor.purpleColor()
+        self.refreshControl?.tintColor = UIColor.whiteColor()
+        self.refreshControl?.addTarget(self, action: Selector("refreshData"), forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    func refreshData() {
+        self.page = 1
+        self.boardList = BoardParser.boardList(link, page: page)
+        self.reloadData()
+    }
+    
+    func reloadData() {
+        self.tableView.reloadData()
+        
+        if (self.refreshControl? != nil) {
+            self.refreshControl?.endRefreshing()
+        }
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -56,6 +82,8 @@ class UIBoardViewController : UITableViewController {
             
             let myIndexPath: NSIndexPath = self.tableView.indexPathForSelectedRow()!
             
+            tableView.deselectRowAtIndexPath(myIndexPath, animated: false)
+            
             let row = myIndexPath.row
             
             detailCtrl.board = boardList[row]
@@ -82,14 +110,8 @@ class UIBoardViewController : UITableViewController {
             let indexPath = NSIndexPath(forRow: boardList.count - 1, inSection: 0)
             
             indexPathArr.arrayByAddingObject(indexPath)
-            
-//            self.tableView.insertRowsAtIndexPaths(e, withRowAnimation: UITableViewRowAnimation.Automatic)
-            
         }
         
-//        self.tableView.insertRowsAtIndexPaths(indexPathArr, withRowAnimation: UITableViewRowAnimation.Automatic)
-
-//        self.tableView.endUpdates()
         self.tableView.reloadData()
     }
     

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -257,8 +256,17 @@
                                     <constraint firstAttribute="trailing" secondItem="Zbj-dD-bmD" secondAttribute="trailing" id="eOv-ax-UKA"/>
                                     <constraint firstAttribute="centerX" secondItem="Zbj-dD-bmD" secondAttribute="centerX" id="uvK-bc-QYh"/>
                                 </constraints>
+                                <variation key="widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="487"/>
+                                </variation>
                                 <variation key="widthClass=regular" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="64" width="800" height="487"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="287"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="687"/>
                                 </variation>
                             </scrollView>
                         </subviews>
@@ -314,7 +322,7 @@
             </objects>
             <point key="canvasLocation" x="-330" y="-208"/>
         </scene>
-        <!--Item-->
+        <!--ㅇㅇㅇ-->
         <scene sceneID="sn6-KK-ioI">
             <objects>
                 <viewController id="Yu8-Yc-ogn" customClass="UILoginViewController" customModule="NGTVApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -342,14 +350,54 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qum-hf-dJJ">
-                                <rect key="frame" x="277" y="131" width="38" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Qum-hf-dJJ" secondAttribute="height" multiplier="19:15" id="aWL-XO-bbF"/>
-                                </constraints>
-                                <state key="normal" title="Login">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQr-Zg-5Ka">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="v6T-a7-IoJ">
+                                        <connections>
+                                            <action selector="takePicture:" destination="Yu8-Yc-ogn" id="NxH-BM-XYD"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="461" width="400" height="44"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="Yu8-Yc-ogn" id="9k6-RN-I25"/>
+                                </connections>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EaK-Uf-QUh">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="263" width="50" height="50"/>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVw-Je-TSD">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="74" y="263" width="50" height="50"/>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNc-9R-9o9">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="올리기">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doWrite:" destination="Yu8-Yc-ogn" eventType="touchUpInside" id="djU-i3-Jig"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qum-hf-dJJ">
+                                <rect key="frame" x="281" y="411" width="38" height="30"/>
+                                <state key="normal" title="사진">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="181" y="411" width="38" height="30"/>
+                                </variation>
                                 <connections>
                                     <action selector="login:" destination="Yu8-Yc-ogn" eventType="touchUpInside" id="Emz-d4-3CW"/>
                                 </connections>
@@ -357,30 +405,66 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Qum-hf-dJJ" firstAttribute="top" secondItem="oM1-B6-dA0" secondAttribute="bottom" constant="24" id="LoB-F4-3sN"/>
-                            <constraint firstItem="x8K-iy-4O5" firstAttribute="top" secondItem="Qum-hf-dJJ" secondAttribute="bottom" constant="390" id="RT6-MP-2Bf"/>
+                            <constraint firstAttribute="centerX" secondItem="Qum-hf-dJJ" secondAttribute="centerX" id="3Zw-Mb-2UB"/>
+                            <constraint firstAttribute="centerX" secondItem="fNc-9R-9o9" secondAttribute="centerX" id="Q53-qr-fkE"/>
+                            <constraint firstItem="bQr-Zg-5Ka" firstAttribute="top" secondItem="50U-w5-RBI" secondAttribute="bottom" constant="441" id="QHz-A4-2Is"/>
                             <constraint firstItem="V85-20-BtA" firstAttribute="leading" secondItem="57q-ln-INQ" secondAttribute="leadingMargin" id="RqP-ay-J1I"/>
+                            <constraint firstAttribute="centerY" secondItem="Qum-hf-dJJ" secondAttribute="centerY" constant="-126" id="SQQ-cD-s2Z"/>
                             <constraint firstItem="oM1-B6-dA0" firstAttribute="top" secondItem="V85-20-BtA" secondAttribute="bottom" constant="14" id="YAc-bB-qX0"/>
-                            <constraint firstItem="Qum-hf-dJJ" firstAttribute="leading" secondItem="57q-ln-INQ" secondAttribute="leadingMargin" constant="261" id="YXX-Pu-9EH"/>
                             <constraint firstItem="oM1-B6-dA0" firstAttribute="trailing" secondItem="57q-ln-INQ" secondAttribute="trailingMargin" id="YZe-VP-fQ5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Qum-hf-dJJ" secondAttribute="trailing" constant="269" id="cbU-Eg-6Ld"/>
+                            <constraint firstItem="Qum-hf-dJJ" firstAttribute="top" secondItem="fNc-9R-9o9" secondAttribute="bottom" constant="23" id="a7f-7y-dKr"/>
+                            <constraint firstAttribute="centerY" secondItem="fNc-9R-9o9" secondAttribute="centerY" constant="-73" id="ceH-iY-bpI"/>
                             <constraint firstItem="V85-20-BtA" firstAttribute="top" secondItem="50U-w5-RBI" secondAttribute="bottom" constant="13" id="kok-Re-eoi"/>
                             <constraint firstItem="oM1-B6-dA0" firstAttribute="leading" secondItem="57q-ln-INQ" secondAttribute="leadingMargin" id="lwL-eF-mMc"/>
                             <constraint firstItem="V85-20-BtA" firstAttribute="trailing" secondItem="57q-ln-INQ" secondAttribute="trailingMargin" id="qaw-DM-JcI"/>
+                            <constraint firstItem="x8K-iy-4O5" firstAttribute="top" secondItem="bQr-Zg-5Ka" secondAttribute="bottom" constant="46" id="zmk-yc-DOm"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="bQr-Zg-5Ka"/>
+                                <exclude reference="EaK-Uf-QUh"/>
+                                <exclude reference="zVw-Je-TSD"/>
+                                <exclude reference="fNc-9R-9o9"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Q53-qr-fkE"/>
+                                <exclude reference="ceH-iY-bpI"/>
+                                <exclude reference="QHz-A4-2Is"/>
+                                <exclude reference="a7f-7y-dKr"/>
+                                <exclude reference="zmk-yc-DOm"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="bQr-Zg-5Ka"/>
+                                <include reference="EaK-Uf-QUh"/>
+                                <include reference="zVw-Je-TSD"/>
+                                <include reference="fNc-9R-9o9"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Q53-qr-fkE"/>
+                                <include reference="ceH-iY-bpI"/>
+                                <include reference="QHz-A4-2Is"/>
+                                <include reference="a7f-7y-dKr"/>
+                                <include reference="zmk-yc-DOm"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="98L-Ud-p9K"/>
+                    <tabBarItem key="tabBarItem" title="ㅇㅇㅇ" image="second" id="98L-Ud-p9K"/>
                     <connections>
                         <outlet property="id" destination="V85-20-BtA" id="SnN-26-4Fx"/>
+                        <outlet property="img" destination="EaK-Uf-QUh" id="PGK-k5-aJB"/>
+                        <outlet property="imgBtn" destination="zVw-Je-TSD" id="ZYU-oS-VBw"/>
                         <outlet property="passwd" destination="oM1-B6-dA0" id="66Z-h2-pob"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VIi-RX-MJs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="250" y="779"/>
+            <point key="canvasLocation" x="103.5" y="604"/>
         </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="second" width="30" height="30"/>
     </resources>
 </document>
