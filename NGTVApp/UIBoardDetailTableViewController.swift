@@ -20,8 +20,7 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        detail = BoardParser.boardDetail(board.link!)
-        commentList = BoardParser.commentList(board.link!)
+        (detail, commentList) = BoardParser.boardDetail(board.link!)
 //        self.tabBarController?.tabBar.hidden = true
         
         self.refreshControl = UIRefreshControl()
@@ -31,8 +30,7 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
     }
     
     func refreshData() {
-        detail = BoardParser.boardDetail(board.link!)
-        commentList = BoardParser.commentList(board.link!)
+        (detail, commentList) = BoardParser.boardDetail(board.link!)
         self.reloadData()
     }
     
@@ -88,7 +86,7 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
                 _webView = cell.content
                 
                 _webView.delegate = self
-                _webView.loadHTMLString(detail.content, baseURL: _url)
+                _webView.loadHTMLString(BaseData.sharedInstance.baseHTML(detail.content!), baseURL: _url)
                 _webView.layer.cornerRadius = 0
                 _webView.userInteractionEnabled = true
                 _webView.clipsToBounds = true

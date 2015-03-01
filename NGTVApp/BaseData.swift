@@ -42,4 +42,28 @@ class BaseData:NSObject {
         var htmlString = NSString(contentsOfURL: url!, encoding: NSUTF8StringEncoding, error: error)
         self.baseData = NSData(contentsOfURL: url!)
     }
+    
+    func baseHTML(content: NSString) -> NSString {
+        let baseHtml = "<!doctype html>" +
+            "<html>" +
+            "<head>" +
+            "<meta name=\"viewport\" content=\"width=device-width, user-scalable=no\">" +
+            "<meta http-equiv=\"Content-Type\" content=\"text/html charset=UTF-8\">" +
+            "<style>" +
+            "img {" +
+            "width:100%;" +
+            "}" +
+            "embed {" +
+            "width:100%;" +
+            "height:240px;" +
+            "}" +
+            "</style>" +
+            "</head>" +
+            "<body>" +
+            content +
+            "</body>" +
+        "</html>"
+        
+        return baseHtml
+    }
 }

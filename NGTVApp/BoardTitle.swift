@@ -9,6 +9,7 @@
 import UIKit
 
 class BoardTitle : NSObject, Printable {
+    var boardId: NSString!
     var link : NSString?
     var title : NSString?
     
@@ -17,6 +18,6 @@ class BoardTitle : NSObject, Printable {
     }
     
     override var description: String {
-        return "link:\(link), title:\(title)\n"
+        return "boardId: \(boardId), link:\(link), title:\(title)\n"
     }
 }

@@ -10,7 +10,6 @@ import UIKit
 import SwiftHTTP
 
 class UILoginViewController : UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    var currentDetailViewController : UIViewController?
     @IBOutlet weak var id: UITextField!
     @IBOutlet weak var passwd: UITextField!
     
@@ -20,8 +19,12 @@ class UILoginViewController : UIViewController, UIActionSheetDelegate, UIImagePi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.currentDetailViewController = UILoginViewController()
-
+        var detail = BoardDetail()
+        var commentList = Array<Comment>()
+        
+        (detail, commentList) = BoardParser.boardDetail("http://www.nicegame.tv/bbs/etc/view/537952?page=1")
+        println(detail)
+//        println(commentList)
     }
     
     @IBAction func takePicture(sender: AnyObject) {

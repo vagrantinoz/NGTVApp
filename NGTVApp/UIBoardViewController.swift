@@ -16,7 +16,6 @@ class UIBoardViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        BaseData.sharedInstance.refreshData()
         let isLogin = NGTVNetworkCheck.isLogin()
 
         if isLogin == false {
@@ -95,7 +94,7 @@ class UIBoardViewController : UITableViewController {
         
         var indexPathArr: NSArray = NSArray()
         
-        let lastBoardNo = boardList[boardList.count - 1].number!.integerValue
+        let lastBoardNo = boardList[boardList.count - 1].boardNumber!.integerValue
         
 //        self.tableView.beginUpdates()
         for e in addList {
@@ -103,7 +102,7 @@ class UIBoardViewController : UITableViewController {
                 continue
             }
             
-            if e.number!.integerValue > lastBoardNo {
+            if e.boardNumber!.integerValue > lastBoardNo {
                 continue
             }
             self.boardList.append(e)

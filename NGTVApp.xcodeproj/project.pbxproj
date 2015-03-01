@@ -28,7 +28,6 @@
 		E764D8661A90C0E20014CFFE /* BoardParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E764D8651A90C0E20014CFFE /* BoardParser.swift */; };
 		E77764E11A948BE100358302 /* UIBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764E01A948BE100358302 /* UIBoardViewController.swift */; };
 		E77764E31A94907A00358302 /* UIBoardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764E21A94907A00358302 /* UIBoardViewCell.swift */; };
-		E77764E51A9493F500358302 /* UIBoardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764E41A9493F500358302 /* UIBoardDetailViewController.swift */; };
 		E77764E91A9701E700358302 /* UIBoardDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764E81A9701E700358302 /* UIBoardDetailTableViewController.swift */; };
 		E77764EB1A97025D00358302 /* UIBoardDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764EA1A97025D00358302 /* UIBoardDetailViewCell.swift */; };
 		E77764ED1A9713F800358302 /* UICommentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764EC1A9713F800358302 /* UICommentViewCell.swift */; };
@@ -134,7 +133,6 @@
 		E764D8651A90C0E20014CFFE /* BoardParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardParser.swift; sourceTree = "<group>"; };
 		E77764E01A948BE100358302 /* UIBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBoardViewController.swift; sourceTree = "<group>"; };
 		E77764E21A94907A00358302 /* UIBoardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBoardViewCell.swift; sourceTree = "<group>"; };
-		E77764E41A9493F500358302 /* UIBoardDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBoardDetailViewController.swift; sourceTree = "<group>"; };
 		E77764E81A9701E700358302 /* UIBoardDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBoardDetailTableViewController.swift; sourceTree = "<group>"; };
 		E77764EA1A97025D00358302 /* UIBoardDetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBoardDetailViewCell.swift; sourceTree = "<group>"; };
 		E77764EC1A9713F800358302 /* UICommentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICommentViewCell.swift; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 				E7105DE01A93C5A100DA862D /* tableViewCell */,
 				E7105DE51A93C66200DA862D /* UITitleViewController.swift */,
 				E77764E01A948BE100358302 /* UIBoardViewController.swift */,
-				E77764E41A9493F500358302 /* UIBoardDetailViewController.swift */,
 				E77764E81A9701E700358302 /* UIBoardDetailTableViewController.swift */,
 				E76492171A9B7B1E0065E1EE /* UILoginViewController.swift */,
 			);
@@ -476,7 +473,6 @@
 				E7105DDE1A93C08400DA862D /* BoardTitle.swift in Sources */,
 				E764D8641A90BFCB0014CFFE /* Comment.swift in Sources */,
 				E788E4661A9CD53A0072CDD3 /* NGTVNetworkCheck.swift in Sources */,
-				E77764E51A9493F500358302 /* UIBoardDetailViewController.swift in Sources */,
 				E77764E11A948BE100358302 /* UIBoardViewController.swift in Sources */,
 				E764D8621A90BE6F0014CFFE /* BoardDetail.swift in Sources */,
 			);

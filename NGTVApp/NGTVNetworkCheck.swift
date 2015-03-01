@@ -14,9 +14,7 @@ class NGTVNetworkCheck : NSObject {
     }
     
     class func isLogin() -> Bool {
-        var data = BaseData.sharedInstance.baseData
-        
-        var htmlString = NSString(bytes: data.bytes, length: data.length, encoding: NSUTF8StringEncoding)
+        var htmlString = NSString(bytes: BaseData.sharedInstance.baseData.bytes, length: BaseData.sharedInstance.baseData.length, encoding: NSUTF8StringEncoding)
         
         if(htmlString!.containsString("value=\"로그인\"")) {
            return false

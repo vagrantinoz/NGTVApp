@@ -11,9 +11,8 @@ import UIKit
 class Board : NSObject, Printable {
     var noticeYN : NSString?
     var noticeImgSrc : NSString?
-    var number : NSString?
+    var boardNumber : NSString?
     var link : NSString?
-    var levelImg : NSString?
     var level : NSString?
     var nick : NSString?
     var title : NSString?
@@ -27,7 +26,7 @@ class Board : NSObject, Printable {
     }
     
     override var description: String {
-        return "noticeYN:\(noticeYN), noticeImgSrc:\(noticeImgSrc), number:\(number), link:\(link), " +
-            "levelImg:\(levelImg), level:\(level), nick:\(nick), title:\(title), commentCnt:\(commentCnt), wrtTime:\(wrtTime), viewCnt:\(viewCnt), recommendCnt:\(recommendCnt)\n"
+        return "noticeYN:\(noticeYN), noticeImgSrc:\(noticeImgSrc), number:\(boardNumber), link:\(link), " +
+            "level:\(level), nick:\(nick), title:\(title), commentCnt:\(commentCnt), wrtTime:\(wrtTime), viewCnt:\(viewCnt), recommendCnt:\(recommendCnt)\n"
     }
 }

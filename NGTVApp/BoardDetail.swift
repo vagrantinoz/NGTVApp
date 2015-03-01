@@ -9,20 +9,15 @@
 import UIKit
 
 class BoardDetail : NSObject, Printable {
-    var title : NSString?
-    var date : NSString?
-    var level : NSString?
-    var levelImg : NSString?
-    var nick : NSString?
     var permLink : NSString?
     var content : NSString?
-    var recommendCnt : NSString?
+    var isMine : NSString = "N"
     
     override init() {
         super.init()
     }
     
     override var description: String {
-        return "title:\(title), date:\(date), level:\(level), levelImg:\(levelImg), nick:\(nick), permLink:\(permLink), recommendCnt:\(recommendCnt)\n\(content)"
+        return "permLink:\(permLink), isMine:\(isMine)\n\(content)"
     }
 }

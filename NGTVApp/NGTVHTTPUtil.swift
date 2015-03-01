@@ -28,13 +28,9 @@ class NGTVHTTPUtil : NSObject {
         
         var session = NSURLSession.sharedSession()
         session.dataTaskWithRequest(request, completionHandler: { (data:NSData!, response:NSURLResponse!, error:NSError!) -> Void in
-//            var loginStatus = NSString(bytes: data.bytes, length: data.length, encoding: NSUTF8StringEncoding)
-//            println(loginStatus)
             BaseData.sharedInstance.refreshData()
             
         }).resume()
-        
-//        println(NGTVNetworkCheck.isLogin)
     }
     
     // 글 작성 기능(수정 포함)
