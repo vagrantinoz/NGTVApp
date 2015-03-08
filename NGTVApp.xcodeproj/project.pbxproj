@@ -31,11 +31,12 @@
 		E77764E91A9701E700358302 /* UIBoardDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764E81A9701E700358302 /* UIBoardDetailTableViewController.swift */; };
 		E77764EB1A97025D00358302 /* UIBoardDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764EA1A97025D00358302 /* UIBoardDetailViewCell.swift */; };
 		E77764ED1A9713F800358302 /* UICommentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764EC1A9713F800358302 /* UICommentViewCell.swift */; };
-		E77764EF1A97140700358302 /* UICommentDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77764EE1A97140700358302 /* UICommentDetailViewCell.swift */; };
 		E788E4661A9CD53A0072CDD3 /* NGTVNetworkCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E788E4651A9CD53A0072CDD3 /* NGTVNetworkCheck.swift */; };
 		E788E4681A9CD6AA0072CDD3 /* NGTVHTTPUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E788E4671A9CD6AA0072CDD3 /* NGTVHTTPUtil.swift */; };
 		E788E49A1A9F6DC60072CDD3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E788E4991A9F6DC60072CDD3 /* LaunchScreen.xib */; };
 		E788E4EA1A9F90450072CDD3 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7105F6F1A90B10200C11F89 /* libxml2.2.dylib */; };
+		E7965EE41AA55EA9003BDE2E /* UIDevice-Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E7965EE31AA55EA9003BDE2E /* UIDevice-Reachability.m */; };
+		E7965EE71AA55EDD003BDE2E /* wwanconnect.c in Sources */ = {isa = PBXBuildFile; fileRef = E7965EE51AA55EDD003BDE2E /* wwanconnect.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,11 +137,14 @@
 		E77764E81A9701E700358302 /* UIBoardDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBoardDetailTableViewController.swift; sourceTree = "<group>"; };
 		E77764EA1A97025D00358302 /* UIBoardDetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBoardDetailViewCell.swift; sourceTree = "<group>"; };
 		E77764EC1A9713F800358302 /* UICommentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICommentViewCell.swift; sourceTree = "<group>"; };
-		E77764EE1A97140700358302 /* UICommentDetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICommentDetailViewCell.swift; sourceTree = "<group>"; };
 		E788E4651A9CD53A0072CDD3 /* NGTVNetworkCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NGTVNetworkCheck.swift; sourceTree = "<group>"; };
 		E788E4671A9CD6AA0072CDD3 /* NGTVHTTPUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NGTVHTTPUtil.swift; sourceTree = "<group>"; };
 		E788E4991A9F6DC60072CDD3 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		E788E5161A9F914F0072CDD3 /* SwiftHTTP.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftHTTP.xcodeproj; path = SwiftHTTP/SwiftHTTP.xcodeproj; sourceTree = "<group>"; };
+		E7965EE21AA55EA9003BDE2E /* UIDevice-Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Reachability.h"; sourceTree = "<group>"; };
+		E7965EE31AA55EA9003BDE2E /* UIDevice-Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Reachability.m"; sourceTree = "<group>"; };
+		E7965EE51AA55EDD003BDE2E /* wwanconnect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wwanconnect.c; sourceTree = "<group>"; };
+		E7965EE61AA55EDD003BDE2E /* wwanconnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wwanconnect.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,7 +186,6 @@
 				E77764E21A94907A00358302 /* UIBoardViewCell.swift */,
 				E77764EA1A97025D00358302 /* UIBoardDetailViewCell.swift */,
 				E77764EC1A9713F800358302 /* UICommentViewCell.swift */,
-				E77764EE1A97140700358302 /* UICommentDetailViewCell.swift */,
 			);
 			name = tableViewCell;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 		E7105F3F1A90AFD300C11F89 /* NGTVApp */ = {
 			isa = PBXGroup;
 			children = (
+				E7965EE11AA55E96003BDE2E /* reachability */,
 				E76492191A9C8DB90065E1EE /* util */,
 				E7105DDF1A93C58600DA862D /* viewController */,
 				E764D8601A90BE5A0014CFFE /* data */,
@@ -302,6 +306,17 @@
 				E788E5241A9F914F0072CDD3 /* SwiftHTTPOSXTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E7965EE11AA55E96003BDE2E /* reachability */ = {
+			isa = PBXGroup;
+			children = (
+				E7965EE21AA55EA9003BDE2E /* UIDevice-Reachability.h */,
+				E7965EE31AA55EA9003BDE2E /* UIDevice-Reachability.m */,
+				E7965EE51AA55EDD003BDE2E /* wwanconnect.c */,
+				E7965EE61AA55EDD003BDE2E /* wwanconnect.h */,
+			);
+			name = reachability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -455,15 +470,16 @@
 			files = (
 				E788E4681A9CD6AA0072CDD3 /* NGTVHTTPUtil.swift in Sources */,
 				E77764E31A94907A00358302 /* UIBoardViewCell.swift in Sources */,
+				E7965EE41AA55EA9003BDE2E /* UIDevice-Reachability.m in Sources */,
 				E77764ED1A9713F800358302 /* UICommentViewCell.swift in Sources */,
 				E77764EB1A97025D00358302 /* UIBoardDetailViewCell.swift in Sources */,
 				E7105DE81A93CA2000DA862D /* UITitleViewCell.swift in Sources */,
 				E77764E91A9701E700358302 /* UIBoardDetailTableViewController.swift in Sources */,
 				E7105F431A90AFD300C11F89 /* AppDelegate.swift in Sources */,
 				E764D85F1A90B8FC0014CFFE /* Board.swift in Sources */,
+				E7965EE71AA55EDD003BDE2E /* wwanconnect.c in Sources */,
 				E764D8661A90C0E20014CFFE /* BoardParser.swift in Sources */,
 				E7105F6C1A90B0EA00C11F89 /* TFHpple.m in Sources */,
-				E77764EF1A97140700358302 /* UICommentDetailViewCell.swift in Sources */,
 				E7105DDC1A93C01B00DA862D /* NGTVMainParser.swift in Sources */,
 				E7105F6E1A90B0EA00C11F89 /* XPathQuery.m in Sources */,
 				E7105F6D1A90B0EA00C11F89 /* TFHppleElement.m in Sources */,

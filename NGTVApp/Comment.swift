@@ -19,6 +19,7 @@ class Comment: NSObject, Printable {
     var content : NSString?
     var date : NSString?
     var isMine : NSString?
+    var isDelete : NSString = "N"
     
     override init() {
         super.init()

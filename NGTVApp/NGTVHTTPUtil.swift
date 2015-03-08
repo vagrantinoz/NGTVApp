@@ -29,7 +29,6 @@ class NGTVHTTPUtil : NSObject {
         var session = NSURLSession.sharedSession()
         session.dataTaskWithRequest(request, completionHandler: { (data:NSData!, response:NSURLResponse!, error:NSError!) -> Void in
             BaseData.sharedInstance.refreshData()
-            
         }).resume()
     }
     
@@ -47,8 +46,10 @@ class NGTVHTTPUtil : NSObject {
                 ]
         var i = 1
         for img in imgList {
-            var data = UIImagePNGRepresentation(img as UIImage)
-            params.updateValue(HTTPUpload(data: data, fileName: "image\(i).png", mimeType: "image/png"), forKey: "attach\(i++)")
+//            var data = UIImageJPGRepresentation(img as UIImage)
+            var data = UIImageJPEGRepresentation(img as UIImage, CGFloat(0.9))
+//            params.updateValue(HTTPUpload(data: data, fileName: "image\(i).png", mimeType: "image/png"), forKey: "attach\(i++)")
+            params.updateValue(HTTPUpload(data: data, fileName: "image\(i).jpg", mimeType: "image/jpg"), forKey: "attach\(i++)")
             
         }
 

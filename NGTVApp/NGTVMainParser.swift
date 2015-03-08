@@ -9,12 +9,14 @@
 import Foundation
 
 public class NGTVMainParser : NSObject {
-    class func communityBoardList() -> Array<BoardTitle> {
-        var titleList = Array<BoardTitle>()
+    class func communityBoardList() -> (/*noticeList: Array<BoardTitle>, */commuList: Array<BoardTitle>, etcList: Array<BoardTitle>) {
+//        var noticeList = Array<BoardTitle>()
+        var commuList = Array<BoardTitle>()
+        var etcList = Array<BoardTitle>()
         
         var doc = TFHpple(HTMLData: BaseData.sharedInstance.baseData)
         
-        var element : NSArray = doc.searchWithXPathQuery("//div[@class='sideMenu']//dl[2]//dd//a")
+        var element = doc.searchWithXPathQuery("//div[@class='sideMenu']//dl[2]//dd//a")
         
         for i in 0...element.count - 1 {
             var tmp = BoardTitle()
@@ -27,9 +29,30 @@ public class NGTVMainParser : NSObject {
             tmp.link = BaseData.sharedInstance.NICEGAMETV_ADDRESS + element[i].objectForKey("href")
             tmp.title = element[i].content
             
-            titleList.append(tmp)
+            commuList.append(tmp)
         }
         
-        return titleList
+        element = doc.searchWithXPathQuery("//div[@class='sideMenu']//dl[3]//dd//a")
+        
+        for i in 0...element.count - 1 {
+            var boardId = element[i].objectForKey("href") as NSString
+            
+            boardId = boardId.stringByReplacingOccurrencesOfString("/bbs/", withString: "")
+            boardId = boardId.stringByReplacingOccurrencesOfString("/list", withString: "")
+            
+            if boardId == "rank" {
+                continue;
+            }
+            
+            var tmp = BoardTitle()
+            
+            tmp.boardId = boardId
+            tmp.link = BaseData.sharedInstance.NICEGAMETV_ADDRESS + element[i].objectForKey("href")
+            tmp.title = element[i].content
+            
+            etcList.append(tmp)
+        }
+        
+        return (commuList, etcList)
     }
 }

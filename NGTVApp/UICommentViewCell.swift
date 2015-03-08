@@ -9,6 +9,7 @@
 import UIKit
 class UICommentViewCell: UITableViewCell {
     @IBOutlet weak var nick: UILabel!
-    @IBOutlet weak var comment: UILabel!
     @IBOutlet weak var levelImg: UIImageView!
+    @IBOutlet weak var wrtTime: UILabel!
+    @IBOutlet var content: UILabel!
 }

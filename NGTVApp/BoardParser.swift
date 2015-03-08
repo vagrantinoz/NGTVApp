@@ -6,7 +6,7 @@
 //  Copyright (c) 2015년 lunafei. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public class BoardParser : NSObject {    
     /*
@@ -26,6 +26,7 @@ public class BoardParser : NSObject {
         var doc = TFHpple(HTMLData: htmlData!)
         
         var element : NSArray = doc.searchWithXPathQuery("//table[@class='boardList']//tbody//tr")
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         for e in element {
             var tmp = Board()
             
@@ -90,7 +91,7 @@ public class BoardParser : NSObject {
             
             tmpList.append(tmp)
         }
-        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         return tmpList
     }
     
@@ -107,9 +108,12 @@ public class BoardParser : NSObject {
         var htmlData = NSData(contentsOfURL: url!)
         var doc = TFHpple(HTMLData: htmlData!)
         
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
         self.parseBoardDetail(detail, doc: doc)
         var commentList: Array<Comment> = self.parseCommentList(doc)
         
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         
         return (detail, commentList)
     }
@@ -151,8 +155,17 @@ public class BoardParser : NSObject {
                 
                 // 댓글 data_id값을 가져온다.
                 let dataIdTag = tmpCmnItem.searchWithXPathQuery("//div[@class='func']")
-                tmp.commentId = dataIdTag[0].objectForKey("data-id")
                 
+                // 삭제된 댓글일 경우 해당 태그가 없을 수 있으므로 없을경우에는 데이터를 가지고 오지 않도록 처리
+                if (dataIdTag.count > 0) {
+                    tmp.commentId = dataIdTag[0].objectForKey("data-id")
+                    
+                    // 삭제되지 않은 댓글에서만 추천 점수를 가져옴
+                    let recomScore = tmpCmnItem.searchWithXPathQuery("//div[@class='recommend_score']")
+                    tmp.recommentCnt = recomScore[0].content
+                } else {
+                    tmp.isDelete = "Y"  // 삭제된 댓글일 경우 삭제표시
+                }
                 
                 let commentType: NSString = tmpCmnItem.objectForKey("class")
                 if commentType.containsString("best") {
@@ -182,8 +195,6 @@ public class BoardParser : NSObject {
                 let content = tmpCmnItem.searchWithXPathQuery("//p[@class='content']")
                 tmp.content = content[0].content.description.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                 
-                let recomScore = tmpCmnItem.searchWithXPathQuery("//div[@class='recommend_score']")
-                tmp.recommentCnt = recomScore[0].content
                 
                 // 삭제버튼 유무 체크로 자신이 쓴 댓글인지 확인
                 let isMineTag = tmpCmnItem.searchWithXPathQuery("//a[@class='delete']")

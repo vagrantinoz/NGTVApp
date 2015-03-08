@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate {
+class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate{
     var detail: BoardDetail = BoardDetail()
     var commentList = Array<Comment>()
     var board: Board = Board()
@@ -23,10 +23,30 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
         (detail, commentList) = BoardParser.boardDetail(board.link!)
 //        self.tabBarController?.tabBar.hidden = true
         
+        tableView.estimatedRowHeight = 100.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.tableView.sectionHeaderHeight = 0;
+        self.tableView.sectionFooterHeight = 0;
+        
+        commentCell = UICommentViewCell()
+        
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.backgroundColor = UIColor.purpleColor()
-        self.refreshControl?.tintColor = UIColor.whiteColor()
-        self.refreshControl?.addTarget(self, action: Selector("refreshData"), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl!.backgroundColor = UIColor(red: CGFloat(0.0/255.0), green: CGFloat(146.0/255.0), blue: CGFloat(189.0/255.0), alpha: CGFloat(1.0))
+        self.refreshControl!.tintColor = UIColor.whiteColor()
+        self.refreshControl!.addTarget(self, action: Selector("refreshData"), forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 20.0
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0.01
+        } else {
+            return 30
+        }
     }
     
     func refreshData() {
@@ -67,11 +87,37 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
                 let cellIndentifier = "boardViewCell"
                 var cell : UIBoardViewCell = tableView.dequeueReusableCellWithIdentifier(cellIndentifier, forIndexPath: indexPath) as UIBoardViewCell
                 
-                cell.title.text = board.title
-                cell.nick.text = board.nick
+                cell.title.text = self.board.title
+                cell.nick.text = self.board.nick
                 
                 var img = UIImage(named: board.level!)
                 cell.levelImg.image = img
+                
+                cell.wrtTime.text = "\(self.board.wrtTime!) (\(self.board.viewCnt!))"
+                
+                // 댓글 모양새 변경
+                cell.comment.font = UIFont(name: "GillSans-Bold", size: 13)
+                cell.comment.layer.masksToBounds = true
+                cell.comment.layer.cornerRadius = 5
+                
+                var commentCnt = 0
+                
+                if self.board.commentCnt != nil {
+                    commentCnt = self.board.commentCnt!.integerValue
+                }
+                
+                cell.comment.text = "\(commentCnt)"
+                
+                // 각 댓글 갯수별로 댓글 배경색 변경
+                if commentCnt > 40 {
+                    cell.comment.backgroundColor = UIColor(red: CGFloat(255.0/255.0), green: CGFloat(105.0/255.0), blue: CGFloat(166.0/255.0), alpha: CGFloat(1.0))
+                } else if commentCnt > 20 {
+                    cell.comment.backgroundColor = UIColor(red: CGFloat(255.0/255.0), green: CGFloat(158.0/255.0), blue: CGFloat(11.0/255.0), alpha: CGFloat(1.0))
+                } else if commentCnt > 0 {
+                    cell.comment.backgroundColor = UIColor(red: CGFloat(139.0/255.0), green: CGFloat(226.0/255.0), blue: CGFloat(253.0/255.0), alpha: CGFloat(1.0))
+                } else {
+                    cell.comment.backgroundColor = UIColor(red: CGFloat(169.0/255.0), green: CGFloat(170.0/255.0), blue: CGFloat(168.0/255.0), alpha: CGFloat(1.0))
+                }
                 
                 // 사용자가 셀을 클릭해도 선택이 안된거처럼 보이도록 설정
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -82,7 +128,7 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
                 let cellIndentifier = "boardDetailViewCell"
                 var cell : UIBoardDetailViewCell
                 = tableView.dequeueReusableCellWithIdentifier(cellIndentifier, forIndexPath: indexPath) as UIBoardDetailViewCell
-                
+            
                 _webView = cell.content
                 
                 _webView.delegate = self
@@ -96,6 +142,8 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
                 
                 _webView.hidden = true
                 
+//                _webView.scrollView.addObserver(self, forKeyPath: "webViewScroll", options: NSKeyValueObservingOptions.New, context: nil)
+                
                 // 사용자가 셀을 클릭해도 선택이 안된거처럼 보이도록 설정
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
                 
@@ -105,14 +153,13 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
             let cellIndentifier = "commentViewCell"
             var cell : UICommentViewCell
             = tableView.dequeueReusableCellWithIdentifier(cellIndentifier, forIndexPath: indexPath) as UICommentViewCell
-            
-            cell.comment.text = commentList[indexPath.row].content
+            cell.content.text = commentList[indexPath.row].content
+//            cell.content.addObserver(self, forKeyPath: "commentSize", options: NSKeyValueObservingOptions.New, context: nil)
+            //cell.comment.text = commentList[indexPath.row].content
             cell.nick.text = commentList[indexPath.row].nick
             
             var img = UIImage(named: commentList[indexPath.row].level!)
             cell.levelImg.image = img
-            
-            cell.comment.sizeToFit()
             
             return cell
         }
@@ -124,48 +171,43 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
 //        var newBounds = webView.bounds
 //        newBounds.size.height = webView.scrollView.contentSize.height
 //        webView.bounds = newBounds
-
+        
         var frame :CGRect = webView.frame
         frame.size.height = 1
         webView.frame = frame
         
         var fittingSize = webView.sizeThatFits(CGSizeZero)
-        frame.size.height = fittingSize.height + 20
+        frame.size.height = fittingSize.height + 20.0
         webView.frame = frame
         
         _webView.hidden = false
         
+        let indexPath = NSIndexPath(forRow: 1, inSection: 0)
+        let array :NSArray = NSArray(object: indexPath)
+        
+//        self.tableView.beginUpdates()
+//        self.tableView.reloadRowsAtIndexPaths(array, withRowAnimation: UITableViewRowAnimation.None)
+//        self.tableView.endUpdates()
         self.tableView.beginUpdates()
         self.tableView.endUpdates()
-        
-//        self.tableView.reloadData()
     }
-
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            if indexPath.row == 0 {
-                return 84
-            } else if indexPath.row == 1 {
+            if indexPath.row == 1 {
                 if _webView == nil {
                     return 0
                 } else {
-                    return _webView!.frame.height
+                    return _webView!.frame.height + 20.0
                 }
                 
             }
-        } else if indexPath.section == 1 {
-//            commentCell = tableView.dequeueReusableCellWithIdentifier("commentViewCell", forIndexPath: indexPath) as UICommentViewCell
-            return 60
         }
-        
-        return 400
+        return UITableViewAutomaticDimension
     }
-    
-    
-    
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
 
+    
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
-    
-    
 }

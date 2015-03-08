@@ -16,9 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-//        sleep(10)
-//        NGTVHTTPUtil.testURLUtil()
+        NGTVHTTPUtil.login("miharing", passwd: "wlgnsdja01")
         return true
     }
 

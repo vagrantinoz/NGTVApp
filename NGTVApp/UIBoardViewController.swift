@@ -11,30 +11,38 @@ import UIKit
 class UIBoardViewController : UITableViewController {
     var boardList = Array<Board>()
     var page : Int = 1
-    var link = ""
-    var boardTitle = ""
+    var board : BoardTitle!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let isLogin = NGTVNetworkCheck.isLogin()
-
-        if isLogin == false {
-            var alert: UIAlertView = UIAlertView(title: "로그인", message: "로그인에 실패하였습니다", delegate: nil, cancelButtonTitle: "OK")
-            alert.show()
-        }
         
-        self.boardList = BoardParser.boardList(link, page: page)
-//        self.tabBarController?.tabBar.hidden = false
+        self.boardList = BoardParser.boardList(board.link!, page: page)
         
+        // RefreshControl 등록
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.backgroundColor = UIColor.purpleColor()
-        self.refreshControl?.tintColor = UIColor.whiteColor()
-        self.refreshControl?.addTarget(self, action: Selector("refreshData"), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl!.backgroundColor = UIColor(red: CGFloat(0.0/255.0), green: CGFloat(146.0/255.0), blue: CGFloat(189.0/255.0), alpha: CGFloat(1.0))
+        self.refreshControl!.tintColor = UIColor.whiteColor()
+        self.refreshControl!.addTarget(self, action: Selector("refreshData"), forControlEvents: UIControlEvents.ValueChanged)
+        
+        // barItem 등록
+        let btnSearch: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Search, target: self, action: Selector("search"))
+        let btnAdd: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: Selector("write"))
+        let btns :NSArray = NSArray(objects: btnAdd, btnSearch)
+        self.navigationItem.rightBarButtonItems = btns
+    }
+    
+    func search() {
+        println("search")
+    }
+    
+    func write() {
+        println("write")
     }
     
     func refreshData() {
         self.page = 1
-        self.boardList = BoardParser.boardList(link, page: page)
+        self.boardList = BoardParser.boardList(board.link!, page: page)
         self.reloadData()
     }
     
@@ -66,6 +74,32 @@ class UIBoardViewController : UITableViewController {
         var img = UIImage(named: boardList[row].level!)
         cell.levelImg.image = img
         
+        cell.wrtTime.text = "\(self.boardList[row].wrtTime!) (\(self.boardList[row].viewCnt!))"
+        
+        // 댓글 모양새 변경
+        cell.comment.font = UIFont(name: "GillSans-Bold", size: 13)
+        cell.comment.layer.masksToBounds = true
+        cell.comment.layer.cornerRadius = 5
+        
+        var commentCnt = 0
+        
+        if self.boardList[row].commentCnt != nil {
+            commentCnt = self.boardList[row].commentCnt!.integerValue
+        }
+        
+        cell.comment.text = "\(commentCnt)"
+        
+        // 각 댓글 갯수별로 댓글 배경색 변경
+        if commentCnt > 40 {
+            cell.comment.backgroundColor = UIColor(red: CGFloat(255.0/255.0), green: CGFloat(105.0/255.0), blue: CGFloat(166.0/255.0), alpha: CGFloat(1.0))
+        } else if commentCnt > 20 {
+            cell.comment.backgroundColor = UIColor(red: CGFloat(255.0/255.0), green: CGFloat(158.0/255.0), blue: CGFloat(11.0/255.0), alpha: CGFloat(1.0))
+        } else if commentCnt > 0 {
+            cell.comment.backgroundColor = UIColor(red: CGFloat(139.0/255.0), green: CGFloat(226.0/255.0), blue: CGFloat(253.0/255.0), alpha: CGFloat(1.0))
+        } else {
+            cell.comment.backgroundColor = UIColor(red: CGFloat(169.0/255.0), green: CGFloat(170.0/255.0), blue: CGFloat(168.0/255.0), alpha: CGFloat(1.0))
+        }
+        
         if indexPath.row == boardList.count - 1 {
             self.addBoardList(++page)
         }
@@ -90,7 +124,7 @@ class UIBoardViewController : UITableViewController {
     }
     
     func addBoardList(page: Int) {
-        var addList = BoardParser.boardList(link, page: page)
+        var addList = BoardParser.boardList(board.link!, page: page)
         
         var indexPathArr: NSArray = NSArray()
         
@@ -102,7 +136,7 @@ class UIBoardViewController : UITableViewController {
                 continue
             }
             
-            if e.boardNumber!.integerValue > lastBoardNo {
+            if e.boardNumber!.integerValue >= lastBoardNo {
                 continue
             }
             self.boardList.append(e)
