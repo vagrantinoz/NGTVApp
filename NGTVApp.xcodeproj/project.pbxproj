@@ -18,8 +18,8 @@
 		E7105F6C1A90B0EA00C11F89 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = E7105F671A90B0EA00C11F89 /* TFHpple.m */; };
 		E7105F6D1A90B0EA00C11F89 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E7105F691A90B0EA00C11F89 /* TFHppleElement.m */; };
 		E7105F6E1A90B0EA00C11F89 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = E7105F6B1A90B0EA00C11F89 /* XPathQuery.m */; };
-		E74191391A9F9463007AD3CB /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E788E51E1A9F914F0072CDD3 /* SwiftHTTP.framework */; };
-		E741913A1A9F9463007AD3CB /* SwiftHTTP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E788E51E1A9F914F0072CDD3 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E722E7ED1AB05DC100826953 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E722E7EC1AB05DC100826953 /* SwiftHTTP.framework */; };
+		E722E7EE1AB05DCC00826953 /* SwiftHTTP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E722E7EC1AB05DC100826953 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E75B74B01AAC6C1E00410B6A /* BoardWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B74AF1AAC6C1E00410B6A /* BoardWriteViewController.swift */; };
 		E76492181A9B7B1E0065E1EE /* UILoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76492171A9B7B1E0065E1EE /* UILoginViewController.swift */; };
 		E764921B1A9C8E040065E1EE /* BaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E764921A1A9C8E040065E1EE /* BaseData.swift */; };
@@ -48,48 +48,6 @@
 			remoteGlobalIDString = E7105F3C1A90AFD300C11F89;
 			remoteInfo = NGTVApp;
 		};
-		E71E78001A9F9337000CF867 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E788E5161A9F914F0072CDD3 /* SwiftHTTP.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 6BFD901519C8D8B500DD99B6;
-			remoteInfo = SwiftHTTP;
-		};
-		E741913B1A9F9463007AD3CB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E788E5161A9F914F0072CDD3 /* SwiftHTTP.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 6BFD901519C8D8B500DD99B6;
-			remoteInfo = SwiftHTTP;
-		};
-		E788E51D1A9F914F0072CDD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E788E5161A9F914F0072CDD3 /* SwiftHTTP.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6BFD901619C8D8B500DD99B6;
-			remoteInfo = SwiftHTTP;
-		};
-		E788E51F1A9F914F0072CDD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E788E5161A9F914F0072CDD3 /* SwiftHTTP.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6BFD902119C8D8B500DD99B6;
-			remoteInfo = SwiftHTTPTests;
-		};
-		E788E5211A9F914F0072CDD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E788E5161A9F914F0072CDD3 /* SwiftHTTP.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D958025919E6EEEB003C8218;
-			remoteInfo = SwiftHTTPOSX;
-		};
-		E788E5231A9F914F0072CDD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E788E5161A9F914F0072CDD3 /* SwiftHTTP.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D958026319E6EEEB003C8218;
-			remoteInfo = SwiftHTTPOSXTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -99,7 +57,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E741913A1A9F9463007AD3CB /* SwiftHTTP.framework in Embed Frameworks */,
+				E722E7EE1AB05DCC00826953 /* SwiftHTTP.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +85,7 @@
 		E7105F6A1A90B0EA00C11F89 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
 		E7105F6B1A90B0EA00C11F89 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		E7105F6F1A90B10200C11F89 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		E722E7EC1AB05DC100826953 /* SwiftHTTP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTP.framework; path = "../../../Library/Developer/Xcode/DerivedData/NGTVAppWorkspace-bwoiraukmhaifjdgtljfxrbksppx/Build/Products/Debug-iphoneos/SwiftHTTP.framework"; sourceTree = "<group>"; };
 		E75B74AF1AAC6C1E00410B6A /* BoardWriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardWriteViewController.swift; sourceTree = "<group>"; };
 		E76492171A9B7B1E0065E1EE /* UILoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILoginViewController.swift; sourceTree = "<group>"; };
 		E764921A1A9C8E040065E1EE /* BaseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseData.swift; sourceTree = "<group>"; };
@@ -142,7 +101,6 @@
 		E788E4651A9CD53A0072CDD3 /* NGTVNetworkCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NGTVNetworkCheck.swift; sourceTree = "<group>"; };
 		E788E4671A9CD6AA0072CDD3 /* NGTVHTTPUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NGTVHTTPUtil.swift; sourceTree = "<group>"; };
 		E788E4991A9F6DC60072CDD3 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		E788E5161A9F914F0072CDD3 /* SwiftHTTP.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftHTTP.xcodeproj; path = SwiftHTTP/SwiftHTTP.xcodeproj; sourceTree = "<group>"; };
 		E7965EE21AA55EA9003BDE2E /* UIDevice-Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Reachability.h"; sourceTree = "<group>"; };
 		E7965EE31AA55EA9003BDE2E /* UIDevice-Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Reachability.m"; sourceTree = "<group>"; };
 		E7965EE51AA55EDD003BDE2E /* wwanconnect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wwanconnect.c; sourceTree = "<group>"; };
@@ -154,7 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E74191391A9F9463007AD3CB /* SwiftHTTP.framework in Frameworks */,
+				E722E7ED1AB05DC100826953 /* SwiftHTTP.framework in Frameworks */,
 				E788E4EA1A9F90450072CDD3 /* libxml2.2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,7 +154,7 @@
 		E7105F341A90AFD300C11F89 = {
 			isa = PBXGroup;
 			children = (
-				E788E5161A9F914F0072CDD3 /* SwiftHTTP.xcodeproj */,
+				E722E7EC1AB05DC100826953 /* SwiftHTTP.framework */,
 				E7105F6F1A90B10200C11F89 /* libxml2.2.dylib */,
 				E7105F3F1A90AFD300C11F89 /* NGTVApp */,
 				E7105F571A90AFD300C11F89 /* NGTVAppTests */,
@@ -300,17 +258,6 @@
 			name = data;
 			sourceTree = "<group>";
 		};
-		E788E5171A9F914F0072CDD3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E788E51E1A9F914F0072CDD3 /* SwiftHTTP.framework */,
-				E788E5201A9F914F0072CDD3 /* SwiftHTTPTests.xctest */,
-				E788E5221A9F914F0072CDD3 /* SwiftHTTP.framework */,
-				E788E5241A9F914F0072CDD3 /* SwiftHTTPOSXTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		E7965EE11AA55E96003BDE2E /* reachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,8 +284,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E71E78011A9F9337000CF867 /* PBXTargetDependency */,
-				E741913C1A9F9463007AD3CB /* PBXTargetDependency */,
 			);
 			name = NGTVApp;
 			productName = NGTVApp;
@@ -401,12 +346,6 @@
 			mainGroup = E7105F341A90AFD300C11F89;
 			productRefGroup = E7105F3E1A90AFD300C11F89 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = E788E5171A9F914F0072CDD3 /* Products */;
-					ProjectRef = E788E5161A9F914F0072CDD3 /* SwiftHTTP.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				E7105F3C1A90AFD300C11F89 /* NGTVApp */,
@@ -414,37 +353,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		E788E51E1A9F914F0072CDD3 /* SwiftHTTP.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftHTTP.framework;
-			remoteRef = E788E51D1A9F914F0072CDD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E788E5201A9F914F0072CDD3 /* SwiftHTTPTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SwiftHTTPTests.xctest;
-			remoteRef = E788E51F1A9F914F0072CDD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E788E5221A9F914F0072CDD3 /* SwiftHTTP.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftHTTP.framework;
-			remoteRef = E788E5211A9F914F0072CDD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E788E5241A9F914F0072CDD3 /* SwiftHTTPOSXTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SwiftHTTPOSXTests.xctest;
-			remoteRef = E788E5231A9F914F0072CDD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E7105F3B1A90AFD300C11F89 /* Resources */ = {
@@ -513,16 +421,6 @@
 			isa = PBXTargetDependency;
 			target = E7105F3C1A90AFD300C11F89 /* NGTVApp */;
 			targetProxy = E7105F551A90AFD300C11F89 /* PBXContainerItemProxy */;
-		};
-		E71E78011A9F9337000CF867 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftHTTP;
-			targetProxy = E71E78001A9F9337000CF867 /* PBXContainerItemProxy */;
-		};
-		E741913C1A9F9463007AD3CB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftHTTP;
-			targetProxy = E741913B1A9F9463007AD3CB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
