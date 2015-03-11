@@ -8,14 +8,14 @@
 
 import UIKit
 
-class UIBoardViewController : UITableViewController {
+class UIBoardViewController : UITableViewController, UINavigationControllerDelegate {
     var boardList = Array<Board>()
     var page : Int = 1
     var board : BoardTitle!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let isLogin = NGTVNetworkCheck.isLogin()
+        self.title = board.title
         
         self.boardList = BoardParser.boardList(board.link!, page: page)
         
@@ -25,11 +25,19 @@ class UIBoardViewController : UITableViewController {
         self.refreshControl!.tintColor = UIColor.whiteColor()
         self.refreshControl!.addTarget(self, action: Selector("refreshData"), forControlEvents: UIControlEvents.ValueChanged)
         
-        // barItem 등록
-        let btnSearch: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Search, target: self, action: Selector("search"))
-        let btnAdd: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: Selector("write"))
-        let btns :NSArray = NSArray(objects: btnAdd, btnSearch)
-        self.navigationItem.rightBarButtonItems = btns
+        let isLogin = NGTVNetworkCheck.isLogin()
+        
+        if isLogin {    // Login 상태일때
+            // barItem 등록
+            let btnSearch: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Search, target: self, action: Selector("search"))
+            let btnAdd: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: Selector("write"))
+            let btns :NSArray = NSArray(objects: btnAdd, btnSearch)
+            self.navigationItem.rightBarButtonItems = btns
+        } else {  // Login 상태가 아닐때
+            let btnSearch: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Search, target: self, action: Selector("search"))
+            let btns :NSArray = NSArray(objects: btnSearch)
+            self.navigationItem.rightBarButtonItems = btns
+        }
     }
     
     func search() {
@@ -37,7 +45,10 @@ class UIBoardViewController : UITableViewController {
     }
     
     func write() {
-        println("write")
+        let writeCtrl:BoardWriteViewController = self.storyboard?.instantiateViewControllerWithIdentifier("boardWrite")! as BoardWriteViewController
+        
+        presentViewController(writeCtrl, animated: true, completion: nil)
+        
     }
     
     func refreshData() {

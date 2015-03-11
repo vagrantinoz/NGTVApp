@@ -20,6 +20,7 @@
 		E7105F6E1A90B0EA00C11F89 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = E7105F6B1A90B0EA00C11F89 /* XPathQuery.m */; };
 		E74191391A9F9463007AD3CB /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E788E51E1A9F914F0072CDD3 /* SwiftHTTP.framework */; };
 		E741913A1A9F9463007AD3CB /* SwiftHTTP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E788E51E1A9F914F0072CDD3 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E75B74B01AAC6C1E00410B6A /* BoardWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B74AF1AAC6C1E00410B6A /* BoardWriteViewController.swift */; };
 		E76492181A9B7B1E0065E1EE /* UILoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76492171A9B7B1E0065E1EE /* UILoginViewController.swift */; };
 		E764921B1A9C8E040065E1EE /* BaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E764921A1A9C8E040065E1EE /* BaseData.swift */; };
 		E764D85F1A90B8FC0014CFFE /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = E764D85E1A90B8FB0014CFFE /* Board.swift */; };
@@ -126,6 +127,7 @@
 		E7105F6A1A90B0EA00C11F89 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
 		E7105F6B1A90B0EA00C11F89 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		E7105F6F1A90B10200C11F89 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		E75B74AF1AAC6C1E00410B6A /* BoardWriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardWriteViewController.swift; sourceTree = "<group>"; };
 		E76492171A9B7B1E0065E1EE /* UILoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILoginViewController.swift; sourceTree = "<group>"; };
 		E764921A1A9C8E040065E1EE /* BaseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseData.swift; sourceTree = "<group>"; };
 		E764D85E1A90B8FB0014CFFE /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				E77764E01A948BE100358302 /* UIBoardViewController.swift */,
 				E77764E81A9701E700358302 /* UIBoardDetailTableViewController.swift */,
 				E76492171A9B7B1E0065E1EE /* UILoginViewController.swift */,
+				E75B74AF1AAC6C1E00410B6A /* BoardWriteViewController.swift */,
 			);
 			name = viewController;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				E764D85F1A90B8FC0014CFFE /* Board.swift in Sources */,
 				E7965EE71AA55EDD003BDE2E /* wwanconnect.c in Sources */,
 				E764D8661A90C0E20014CFFE /* BoardParser.swift in Sources */,
+				E75B74B01AAC6C1E00410B6A /* BoardWriteViewController.swift in Sources */,
 				E7105F6C1A90B0EA00C11F89 /* TFHpple.m in Sources */,
 				E7105DDC1A93C01B00DA862D /* NGTVMainParser.swift in Sources */,
 				E7105F6E1A90B0EA00C11F89 /* XPathQuery.m in Sources */,

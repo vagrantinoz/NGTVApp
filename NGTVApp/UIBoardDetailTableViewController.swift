@@ -6,6 +6,8 @@
 //  Copyright (c) 2015년 lunafei. All rights reserved.
 //
 
+// TODO : 댓글 작성 후 리플래쉬 할 때에 상단 제목 부분 정보 재로딩 처리 필요
+
 import UIKit
 
 class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate{
@@ -23,7 +25,7 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
         (detail, commentList) = BoardParser.boardDetail(board.link!)
 //        self.tabBarController?.tabBar.hidden = true
         
-        tableView.estimatedRowHeight = 100.0
+        tableView.estimatedRowHeight = 68.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
         self.tableView.sectionHeaderHeight = 0;
@@ -198,7 +200,7 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
                 if _webView == nil {
                     return 0
                 } else {
-                    return _webView!.frame.height + 20.0
+                    return _webView!.frame.height
                 }
                 
             }
