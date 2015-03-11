@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E7105F3C1A90AFD300C11F89"
-               BuildableName = "NGTVApp.app"
-               BlueprintName = "NGTVApp"
-               ReferencedContainer = "container:NGTVApp.xcodeproj">
+               BlueprintIdentifier = "D958025819E6EEEB003C8218"
+               BuildableName = "SwiftHTTP.framework"
+               BlueprintName = "SwiftHTTPOSX"
+               ReferencedContainer = "container:SwiftHTTP.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E7105F531A90AFD300C11F89"
-               BuildableName = "NGTVAppTests.xctest"
-               BlueprintName = "NGTVAppTests"
-               ReferencedContainer = "container:NGTVApp.xcodeproj">
+               BlueprintIdentifier = "D958026219E6EEEB003C8218"
+               BuildableName = "SwiftHTTPOSXTests.xctest"
+               BlueprintName = "SwiftHTTPOSXTests"
+               ReferencedContainer = "container:SwiftHTTP.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,20 +46,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E7105F531A90AFD300C11F89"
-               BuildableName = "NGTVAppTests.xctest"
-               BlueprintName = "NGTVAppTests"
-               ReferencedContainer = "container:NGTVApp.xcodeproj">
+               BlueprintIdentifier = "D958026219E6EEEB003C8218"
+               BuildableName = "SwiftHTTPOSXTests.xctest"
+               BlueprintName = "SwiftHTTPOSXTests"
+               ReferencedContainer = "container:SwiftHTTP.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E7105F3C1A90AFD300C11F89"
-            BuildableName = "NGTVApp.app"
-            BlueprintName = "NGTVApp"
-            ReferencedContainer = "container:NGTVApp.xcodeproj">
+            BlueprintIdentifier = "D958025819E6EEEB003C8218"
+            BuildableName = "SwiftHTTP.framework"
+            BlueprintName = "SwiftHTTPOSX"
+            ReferencedContainer = "container:SwiftHTTP.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -72,15 +72,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E7105F3C1A90AFD300C11F89"
-            BuildableName = "NGTVApp.app"
-            BlueprintName = "NGTVApp"
-            ReferencedContainer = "container:NGTVApp.xcodeproj">
+            BlueprintIdentifier = "D958025819E6EEEB003C8218"
+            BuildableName = "SwiftHTTP.framework"
+            BlueprintName = "SwiftHTTPOSX"
+            ReferencedContainer = "container:SwiftHTTP.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -90,15 +90,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E7105F3C1A90AFD300C11F89"
-            BuildableName = "NGTVApp.app"
-            BlueprintName = "NGTVApp"
-            ReferencedContainer = "container:NGTVApp.xcodeproj">
+            BlueprintIdentifier = "D958025819E6EEEB003C8218"
+            BuildableName = "SwiftHTTP.framework"
+            BlueprintName = "SwiftHTTPOSX"
+            ReferencedContainer = "container:SwiftHTTP.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
