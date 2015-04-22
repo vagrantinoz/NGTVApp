@@ -9,9 +9,14 @@
 import UIKit
 
 class BoardDetail : NSObject, Printable {
-    var permLink : NSString?
-    var content : NSString?
-    var isMine : NSString = "N"
+    var title : String = ""
+    var date : String = ""
+    var writer : String = ""
+    var level : String = ""
+    var score : String = ""
+    var permLink : String = ""
+    var content : String = ""
+    var isMine : String = "N"
     
     override init() {
         super.init()

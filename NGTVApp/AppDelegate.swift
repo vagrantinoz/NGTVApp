@@ -16,7 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        NGTVHTTPUtil.login("miharing", passwd: "wlgnsdja01")
+        /*
+        UITextField *lagFreeField = [[UITextField alloc] init];
+        [self.window addSubview:lagFreeField];
+        [lagFreeField becomeFirstResponder];
+        [lagFreeField resignFirstResponder];
+        [lagFreeField removeFromSuperview];
+        */
+        
+        let lagFreeField = UITextField()
+        self.window?.addSubview(lagFreeField)
+        lagFreeField.becomeFirstResponder()
+        lagFreeField.resignFirstResponder()
+        lagFreeField.removeFromSuperview()
+        
+        AFNetworkActivityIndicatorManager.sharedManager().enabled = true
+        let login = NGTVHTTPAFNetworking()
+        login.login("userid", passwd: "userpassword")
         return true
     }
 

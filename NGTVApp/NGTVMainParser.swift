@@ -9,12 +9,11 @@
 import Foundation
 
 public class NGTVMainParser : NSObject {
-    class func communityBoardList() -> (/*noticeList: Array<BoardTitle>, */commuList: Array<BoardTitle>, etcList: Array<BoardTitle>) {
-//        var noticeList = Array<BoardTitle>()
+    class func communityBoardList(HTMLData : NSData) -> (/*noticeList: Array<BoardTitle>, */commuList: Array<BoardTitle>, etcList: Array<BoardTitle>) {
         var commuList = Array<BoardTitle>()
         var etcList = Array<BoardTitle>()
         
-        var doc = TFHpple(HTMLData: BaseData.sharedInstance.baseData)
+        var doc = TFHpple(HTMLData: HTMLData)
         
         var element = doc.searchWithXPathQuery("//div[@class='sideMenu']//dl[2]//dd//a")
         
@@ -25,7 +24,7 @@ public class NGTVMainParser : NSObject {
             boardId = boardId.stringByReplacingOccurrencesOfString("/bbs/", withString: "")
             boardId = boardId.stringByReplacingOccurrencesOfString("/list", withString: "")
             
-            tmp.boardId = boardId
+            tmp.boardId = boardId as String
             tmp.link = BaseData.sharedInstance.NICEGAMETV_ADDRESS + element[i].objectForKey("href")
             tmp.title = element[i].content
             

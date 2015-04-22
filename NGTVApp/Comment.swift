@@ -9,17 +9,17 @@
 import UIKit
 
 class Comment: NSObject, Printable {
-    var commentId: NSString?
-    var bestYN : NSString = "N"
-    var depthYN : NSString = "N"
-    var profileImg: NSString?
-    var level : NSString?
-    var nick : NSString?
-    var recommentCnt : NSString?
-    var content : NSString?
-    var date : NSString?
-    var isMine : NSString?
-    var isDelete : NSString = "N"
+    var commentId: String = ""
+    var bestYN : String = "N"
+    var depthYN : String = "N"
+    var profileImg: String = ""
+    var level : String = ""
+    var nick : String = ""
+    var recommentCnt : String = ""
+    var content : String = ""
+    var date : String = ""
+    var isMine : String = ""
+    var isDelete : String = "N"
     
     override init() {
         super.init()

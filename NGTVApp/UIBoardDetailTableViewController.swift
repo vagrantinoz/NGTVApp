@@ -13,16 +13,17 @@ import UIKit
 class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate{
     var detail: BoardDetail = BoardDetail()
     var commentList = Array<Comment>()
-    var board: Board = Board()
+//    var board: Board = Board()
     var _url = NSURL(string: "http://www.nicegame.tv")
     var _webView : UIWebView!
+    var link:String!
     
     var commentCell: UICommentViewCell!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        (detail, commentList) = BoardParser.boardDetail(board.link!)
+//        (detail, commentList) = BoardParser.boardDetail(board.link!)
 //        self.tabBarController?.tabBar.hidden = true
         
         tableView.estimatedRowHeight = 68.0
@@ -37,6 +38,10 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
         self.refreshControl!.backgroundColor = UIColor(red: CGFloat(0.0/255.0), green: CGFloat(146.0/255.0), blue: CGFloat(189.0/255.0), alpha: CGFloat(1.0))
         self.refreshControl!.tintColor = UIColor.whiteColor()
         self.refreshControl!.addTarget(self, action: Selector("refreshData"), forControlEvents: UIControlEvents.ValueChanged)
+        
+        self.getBoardDetail()
+        
+//        self.tableView.hidden = true
     }
     
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -52,14 +57,13 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
     }
     
     func refreshData() {
-        (detail, commentList) = BoardParser.boardDetail(board.link!)
+//        (detail, commentList) = BoardParser.boardDetail(board.link!)
+        self.getBoardDetail()
         self.reloadData()
     }
     
     func reloadData() {
-        self.tableView.reloadData()
-        
-        if (self.refreshControl? != nil) {
+        if (self.refreshControl != nil) {
             self.refreshControl?.endRefreshing()
         }
     }
@@ -87,26 +91,22 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
             var index = indexPath.row
             if index == 0 {         // 게시물 제목 부분
                 let cellIndentifier = "boardViewCell"
-                var cell : UIBoardViewCell = tableView.dequeueReusableCellWithIdentifier(cellIndentifier, forIndexPath: indexPath) as UIBoardViewCell
+                var cell : UIBoardViewCell = tableView.dequeueReusableCellWithIdentifier(cellIndentifier, forIndexPath: indexPath) as! UIBoardViewCell
                 
-                cell.title.text = self.board.title
-                cell.nick.text = self.board.nick
+                cell.title.text = self.detail.title as String
+                cell.nick.text = self.detail.writer as String
                 
-                var img = UIImage(named: board.level!)
+                var img = UIImage(named: self.detail.level as String)
                 cell.levelImg.image = img
                 
-                cell.wrtTime.text = "\(self.board.wrtTime!) (\(self.board.viewCnt!))"
+                cell.wrtTime.text = "\(self.detail.date)"
                 
                 // 댓글 모양새 변경
                 cell.comment.font = UIFont(name: "GillSans-Bold", size: 13)
                 cell.comment.layer.masksToBounds = true
                 cell.comment.layer.cornerRadius = 5
                 
-                var commentCnt = 0
-                
-                if self.board.commentCnt != nil {
-                    commentCnt = self.board.commentCnt!.integerValue
-                }
+                var commentCnt = self.commentList.count
                 
                 cell.comment.text = "\(commentCnt)"
                 
@@ -129,20 +129,20 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
             else/* if indexPath == 1*/ {  // 게시물 내용 부분
                 let cellIndentifier = "boardDetailViewCell"
                 var cell : UIBoardDetailViewCell
-                = tableView.dequeueReusableCellWithIdentifier(cellIndentifier, forIndexPath: indexPath) as UIBoardDetailViewCell
-            
-                _webView = cell.content
+                = tableView.dequeueReusableCellWithIdentifier(cellIndentifier, forIndexPath: indexPath) as! UIBoardDetailViewCell
                 
-                _webView.delegate = self
-                _webView.loadHTMLString(BaseData.sharedInstance.baseHTML(detail.content!), baseURL: _url)
-                _webView.layer.cornerRadius = 0
-                _webView.userInteractionEnabled = true
-                _webView.clipsToBounds = true
-                _webView.scalesPageToFit = false
-                _webView.scrollView.scrollEnabled = false
-                _webView.scrollView.bounces = true
-                
-                _webView.hidden = true
+                if detail.content != "" {
+                    _webView = cell.content
+                    
+                    _webView.delegate = self
+                    _webView.loadHTMLString(BaseData.sharedInstance.baseHTML(detail.content) as String, baseURL: _url)
+                    _webView.layer.cornerRadius = 0
+                    _webView.userInteractionEnabled = true
+                    _webView.clipsToBounds = true
+                    _webView.scalesPageToFit = false
+                    _webView.scrollView.scrollEnabled = false
+                    _webView.scrollView.bounces = true
+                }
                 
 //                _webView.scrollView.addObserver(self, forKeyPath: "webViewScroll", options: NSKeyValueObservingOptions.New, context: nil)
                 
@@ -154,13 +154,13 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
         } else {
             let cellIndentifier = "commentViewCell"
             var cell : UICommentViewCell
-            = tableView.dequeueReusableCellWithIdentifier(cellIndentifier, forIndexPath: indexPath) as UICommentViewCell
+            = tableView.dequeueReusableCellWithIdentifier(cellIndentifier, forIndexPath: indexPath) as! UICommentViewCell
             cell.content.text = commentList[indexPath.row].content
 //            cell.content.addObserver(self, forKeyPath: "commentSize", options: NSKeyValueObservingOptions.New, context: nil)
             //cell.comment.text = commentList[indexPath.row].content
             cell.nick.text = commentList[indexPath.row].nick
             
-            var img = UIImage(named: commentList[indexPath.row].level!)
+            var img = UIImage(named: commentList[indexPath.row].level)
             cell.levelImg.image = img
             
             return cell
@@ -182,34 +182,59 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
         frame.size.height = fittingSize.height + 20.0
         webView.frame = frame
         
-        _webView.hidden = false
-        
-        let indexPath = NSIndexPath(forRow: 1, inSection: 0)
-        let array :NSArray = NSArray(object: indexPath)
-        
-//        self.tableView.beginUpdates()
-//        self.tableView.reloadRowsAtIndexPaths(array, withRowAnimation: UITableViewRowAnimation.None)
-//        self.tableView.endUpdates()
+//        self.tableView.hidden = false
+
         self.tableView.beginUpdates()
         self.tableView.endUpdates()
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
         if indexPath.section == 0 {
             if indexPath.row == 1 {
                 if _webView == nil {
                     return 0
                 } else {
-                    return _webView!.frame.height
+                    return _webView!.frame.size.height
                 }
                 
             }
         }
+        
         return UITableViewAutomaticDimension
     }
 
-    
+    /*
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    */
+    func getBoardDetail() {
+        let manager = AFURLSessionManager(sessionConfiguration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        manager.responseSerializer = AFHTTPResponseSerializer()
+        let request : NSMutableURLRequest = AFHTTPRequestSerializer().requestWithMethod("GET", URLString: self.link!, parameters: nil, error: nil)
+        
+        let task = manager.dataTaskWithRequest(request, completionHandler: { (response:NSURLResponse!, responseObject:AnyObject!, error:NSError!) -> Void in
+            if((error) != nil) {
+                let alert = UIAlertView(title: "실패", message: "데이터를 불러오지 못했습니다", delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+            } else {
+                let responseCode = (response as? NSHTTPURLResponse)?.statusCode ?? -1
+                
+                // responseCode 200이 아닐경우(200이 아니면 정상적인 페이지 로딩이 아니다)
+                if (responseCode != 200) {
+                    let alert = UIAlertView(title: "502오류", message: "502 GateError가 발생하였습니다. 앱 종료 후 다시 시도해 주십시오", delegate: nil, cancelButtonTitle: "OK")
+                    alert.show()
+                } else {
+                    var doc = TFHpple(HTMLData: responseObject as! NSData)
+                    
+                    (self.detail, self.commentList) = BoardParser.boardDetail(responseObject as! NSData)
+                    
+                    self.tableView.reloadData()
+                }
+            }
+        })
+        
+        task.resume()
     }
 }

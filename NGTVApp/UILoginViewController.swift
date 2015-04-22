@@ -21,10 +21,6 @@ class UILoginViewController : UIViewController, UIActionSheetDelegate, UIImagePi
         super.viewDidLoad()
         var detail = BoardDetail()
         var commentList = Array<Comment>()
-        
-        (detail, commentList) = BoardParser.boardDetail("http://www.nicegame.tv/bbs/etc/view/537952?page=1")
-        println(detail)
-//        println(commentList)
     }
     
     @IBAction func takePicture(sender: AnyObject) {
@@ -79,7 +75,7 @@ class UILoginViewController : UIViewController, UIActionSheetDelegate, UIImagePi
         }
     }
     
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         img.image = image
         imgBtn.setBackgroundImage(image, forState: UIControlState.Normal)
         

@@ -16,17 +16,18 @@ public class BoardParser : NSObject {
     * 
     * return : Board 클래스의 List
     */
-    class func boardList(boardUrl:NSString, page:NSInteger) -> Array<Board> {
+    class func boardList(HTMLData : NSData) -> (Array<Board>, Bool) {
         var tmpList = Array<Board>()
+        var isLast = false
         
-        let url = NSURL(string: boardUrl + "/" + page.description)
-        var error = NSErrorPointer()
-        var htmlString = NSString(contentsOfURL: url!, encoding: NSUTF8StringEncoding, error: error)
-        var htmlData = NSData(contentsOfURL: url!)
-        var doc = TFHpple(HTMLData: htmlData!)
+        var doc = TFHpple(HTMLData: HTMLData)
         
         var element : NSArray = doc.searchWithXPathQuery("//table[@class='boardList']//tbody//tr")
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
+        if element.count < 24 {
+            isLast = true
+        }
+        
         for e in element {
             var tmp = Board()
             
@@ -50,7 +51,7 @@ public class BoardParser : NSObject {
             let countTag = child2[0].searchWithXPathQuery("//span")
             
             let title :NSString = titleAnker[0].content
-            tmp.title = title.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+            tmp.title = title.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             tmp.link = BaseData.sharedInstance.NICEGAMETV_ADDRESS + titleAnker[0].objectForKey("href")
             
             // 2015.02.28 추가(POST 처리를 위해 게시물의 실제 번호를 주소에서 가져오도록 처리
@@ -62,7 +63,7 @@ public class BoardParser : NSObject {
             if countTag.count != 0 {
                 var commCnt: NSString = countTag[0].content.description
                 commCnt = commCnt.substringWithRange(NSMakeRange(0 + 1, commCnt.length - 2))
-                tmp.commentCnt = commCnt
+                tmp.commentCnt = commCnt as String
             }
             
             // 사용자 레벨, 레벨아이콘 이미지, nickName 가져오기 "//td[3]"
@@ -91,29 +92,19 @@ public class BoardParser : NSObject {
             
             tmpList.append(tmp)
         }
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-        return tmpList
+        return (tmpList, isLast)
     }
     
     /**
      * 상세 화면 조회 (상세글 내용, 댓글내용, 자신의 글 여부)
     **/
-    class func boardDetail(dtlUrl: NSString) -> (BoardDetail, Array<Comment>) {
+    class func boardDetail(HTMLData : NSData) -> (BoardDetail, Array<Comment>) {
         var detail = BoardDetail()
-        var isMine = false
         
-        let url = NSURL(string: dtlUrl)
-        var error = NSErrorPointer()
-        var htmlString = NSString(contentsOfURL: url!, encoding: NSUTF8StringEncoding, error: error)
-        var htmlData = NSData(contentsOfURL: url!)
-        var doc = TFHpple(HTMLData: htmlData!)
-        
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        var doc = TFHpple(HTMLData: HTMLData)
         
         self.parseBoardDetail(detail, doc: doc)
         var commentList: Array<Comment> = self.parseCommentList(doc)
-        
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         
         return (detail, commentList)
     }
@@ -127,9 +118,32 @@ public class BoardParser : NSObject {
         // 작성자 nick XPath "//div[@class='subinfo']//span"  게시물 정보에서 가져와서 사용하도록 수정 (해당 항목 삭제)
         // 작성글 내용 XPath "//div[@class='content']
         // 추천수 Xpath "//p[@class='score']  게시물 정보에서 가져와서 사용하도록 수정 (해당 항목 삭제)
+        let title = doc.searchWithXPathQuery("//div[@class='topinfo']//p[@class='title']")
+        detail.title = title[0].content.description.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        
+        let date = doc.searchWithXPathQuery("//div[@class='topinfo']//span[@class='date']")
+        detail.date = date[0].content.description.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
         let permLink = doc.searchWithXPathQuery("//p[@class='permlink']")
         detail.permLink = permLink[0].content.description.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        
+        let levelImgTag = doc.searchWithXPathQuery("//div[@class='subinfo']//p[@class='writer']//img")
+        if levelImgTag.count > 0 {
+            let levelImgSrc: NSString = levelImgTag[0].objectForKey("src")
+            let slashRange = levelImgSrc.rangeOfString("/", options: NSStringCompareOptions.BackwardsSearch)
+            let level = levelImgSrc.substringFromIndex(slashRange.location + 1).stringByReplacingOccurrencesOfString(".gif", withString: "")
+            detail.level = level
+        }
+        
+        let writer = doc.searchWithXPathQuery("//div[@class='subinfo']//span")
+        if writer.count > 0 {
+            detail.writer = writer[0].content.description.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        }
+        
+        let score = doc.searchWithXPathQuery("//p[@class='score']")
+        if score.count > 0 {
+            detail.score = score[0].content.description.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        }
         
         let isMineTag = doc.searchWithXPathQuery("//a[@class='del']")
         if isMineTag.count > 0 {
@@ -150,7 +164,7 @@ public class BoardParser : NSObject {
         
         if xpathCommentList.count > 0 {
             for e in xpathCommentList {
-                let tmpCmnItem = e as TFHppleElement
+                let tmpCmnItem = e as! TFHppleElement
                 var tmp = Comment()
                 
                 // 댓글 data_id값을 가져온다.

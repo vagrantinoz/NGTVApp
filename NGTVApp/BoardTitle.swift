@@ -9,9 +9,9 @@
 import UIKit
 
 class BoardTitle : NSObject, Printable {
-    var boardId: NSString!
-    var link : NSString?
-    var title : NSString?
+    var boardId: NSString = ""
+    var link : NSString = ""
+    var title : NSString = ""
     
     override init() {
         super.init()

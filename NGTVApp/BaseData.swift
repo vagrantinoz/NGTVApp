@@ -43,7 +43,7 @@ class BaseData:NSObject {
         self.baseData = NSData(contentsOfURL: url!)
     }
     
-    func baseHTML(content: NSString) -> NSString {
+    func baseHTML(content: String) -> String {
         let baseHtml = "<!doctype html>" +
             "<html>" +
             "<head>" +

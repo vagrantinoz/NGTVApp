@@ -32,12 +32,12 @@ class UITitleViewController : UITableViewController {
             println("device.activeWWAN()")
         }
         
-        (commuList, etcList) = NGTVMainParser.communityBoardList()
+        self.communityBoardList()
         
         self.navigationController?.navigationBar.barTintColor = UIColor(red: CGFloat(0.0/255.0), green: CGFloat(146.0/255.0), blue: CGFloat(189.0/255.0), alpha: CGFloat(1.0))
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = NSDictionary(objectsAndKeys: UIColor.whiteColor(), NSForegroundColorAttributeName,
-         UIFont(name: "AppleSDGothicNeo-Bold", size: 18.0)!, NSFontAttributeName)
+         UIFont(name: "AppleSDGothicNeo-Bold", size: 18.0)!, NSFontAttributeName) as [NSObject : AnyObject]
         
         if NGTVNetworkCheck.isLogin() == false {
             let btnAdd: UIBarButtonItem = UIBarButtonItem(title: "Login", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("login"))
@@ -111,8 +111,8 @@ class UITitleViewController : UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellIdentifier: NSString = "titleViewCell"
-        var cell: UITitleViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as UITitleViewCell
+        let cellIdentifier: String = "titleViewCell"
+        var cell: UITitleViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! UITitleViewCell
         
         /*
         if indexPath.section == 0 {
@@ -125,9 +125,9 @@ class UITitleViewController : UITableViewController {
         */
         
         if indexPath.section == 0 {
-            cell.title.text = commuList[indexPath.row].title
+            cell.title.text = commuList[indexPath.row].title as String
         } else {
-            cell.title.text = etcList[indexPath.row].title
+            cell.title.text = etcList[indexPath.row].title as String
         }
     
         return cell
@@ -135,40 +135,49 @@ class UITitleViewController : UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "BoardTableList" {
-            var boardCtrl: UIBoardViewController = segue.destinationViewController as UIBoardViewController
+            var boardCtrl: UIBoardViewController = segue.destinationViewController as! UIBoardViewController
             
             var myIndexPath :NSIndexPath = self.tableView.indexPathForSelectedRow()!
             
             tableView.deselectRowAtIndexPath(myIndexPath, animated: false)
             
-            /*
             if myIndexPath.section == 0 {
-                boardCtrl.link = noticeList[myIndexPath.row].link!
-                boardCtrl.title = noticeList[myIndexPath.row].title!
-                boardCtrl.boardTitle = noticeList[myIndexPath.row].title!
-            } else if myIndexPath.section == 1 {
-                boardCtrl.link = commuList[myIndexPath.row].link!
-                boardCtrl.title = commuList[myIndexPath.row].title!
-                boardCtrl.boardTitle = commuList[myIndexPath.row].title!
-            } else {
-                boardCtrl.link = etcList[myIndexPath.row].link!
-                boardCtrl.title = etcList[myIndexPath.row].title!
-                boardCtrl.boardTitle = etcList[myIndexPath.row].title!
-            }
-            */
-            
-            if myIndexPath.section == 0 {
-//                boardCtrl.link = commuList[myIndexPath.row].link!
-//                boardCtrl.title = commuList[myIndexPath.row].title!
-//                boardCtrl.boardTitle = commuList[myIndexPath.row].title!
                 boardCtrl.board = commuList[myIndexPath.row]
             } else {
-//                boardCtrl.link = etcList[myIndexPath.row].link!
-//                boardCtrl.title = etcList[myIndexPath.row].title!
-//                boardCtrl.boardTitle = etcList[myIndexPath.row].title!
                 boardCtrl.board = etcList[myIndexPath.row]
             }
         
         }
+    }
+    
+    /** 
+        나이스게임티비 게시판 목록 가져오는 부분
+        communityList, etcList 부분만 가져온다(랭크감별단은 전 부분이 비밀글로 되어 있어서 제외시킴)
+    */
+    func communityBoardList() {
+        let manager = AFURLSessionManager(sessionConfiguration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        manager.responseSerializer = AFHTTPResponseSerializer()
+        let request : NSMutableURLRequest = AFHTTPRequestSerializer().requestWithMethod("GET", URLString: BaseData.sharedInstance.NICEGAMETV_ADDRESS + "/bbs/freeboard/list", parameters: nil, error: nil)
+        
+        let task = manager.dataTaskWithRequest(request, completionHandler: { (response:NSURLResponse!, responseObject:AnyObject!, error:NSError!) -> Void in
+            if((error) != nil) {
+                let alert = UIAlertView(title: "실패", message: "데이터를 불러오지 못했습니다", delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+            } else {
+                let responseCode = (response as? NSHTTPURLResponse)?.statusCode ?? -1
+                
+                // responseCode 200이 아닐경우(200이 아니면 정상적인 페이지 로딩이 아니다)
+                if (responseCode != 200) {
+                    let alert = UIAlertView(title: "502오류", message: "502 GateError가 발생하였습니다. 앱 종료 후 다시 시도해 주십시오", delegate: nil, cancelButtonTitle: "OK")
+                    alert.show()
+                } else {                    
+                    (self.commuList, self.etcList) = NGTVMainParser.communityBoardList(responseObject as! NSData)
+                    
+                    self.tableView.reloadData()
+                }
+            }
+        })
+        
+        task.resume()
     }
 }

@@ -9,17 +9,17 @@
 import UIKit
 
 class Board : NSObject, Printable {
-    var noticeYN : NSString?
-    var noticeImgSrc : NSString?
-    var boardNumber : NSString?
-    var link : NSString?
-    var level : NSString?
-    var nick : NSString?
-    var title : NSString?
-    var commentCnt : NSString?
-    var wrtTime : NSString?
-    var viewCnt : NSString?
-    var recommendCnt : NSString?
+    var noticeYN : String = ""
+    var noticeImgSrc : String = ""
+    var boardNumber : NSString = ""
+    var link : String = ""
+    var level : String = ""
+    var nick : String = ""
+    var title : String = ""
+    var commentCnt : String = ""
+    var wrtTime : String = ""
+    var viewCnt : String = ""
+    var recommendCnt : String = ""
     
     override init() {
         super.init()

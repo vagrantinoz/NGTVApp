@@ -5,3 +5,5 @@
 #include "TFHppleElement.h"
 #include "XPathQuery.h"
 #include "UIDevice-Reachability.h"
+#include "AFNetworking.h"
+#include "UIKit+AFNetworking.h"
