@@ -26,8 +26,8 @@ class UIBoardDetailTableViewController :UITableViewController, UIWebViewDelegate
 //        (detail, commentList) = BoardParser.boardDetail(board.link!)
 //        self.tabBarController?.tabBar.hidden = true
         
-        tableView.estimatedRowHeight = 68.0
-        tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 100.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
         
         self.tableView.sectionHeaderHeight = 0;
         self.tableView.sectionFooterHeight = 0;

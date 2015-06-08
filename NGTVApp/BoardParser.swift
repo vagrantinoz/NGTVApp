@@ -111,13 +111,13 @@ public class BoardParser : NSObject {
     
     // TFHpple 넘겨받아 해당 부분의 게시물 상세 정보를 가져오는 함수
     private class func parseBoardDetail(detail: BoardDetail, doc: TFHpple) {
-        // 게시물 제목 XPath  "//div[@class='topinfo']//p[@class='title']"  게시물 정보에서 가져와서 사용하도록 수정 (해당 항목 삭제)
-        // 작성 시간 XPath   "//div[@class='topinfo']//span[@class='date']"  게시물 정보에서 가져와서 사용하도록 수정 (해당 항목 삭제)
+        // 게시물 제목 XPath  "//div[@class='topinfo']//p[@class='title']"
+        // 작성 시간 XPath   "//div[@class='topinfo']//span[@class='date']"
         // 펌링크 XPath "//p[@class=['permlink']"
-        // 작성자 level Img XPath "//div[@class='subinfo']//p[@class='writer']//img  게시물 정보에서 가져와서 사용하도록 수정 (해당 항목 삭제)
-        // 작성자 nick XPath "//div[@class='subinfo']//span"  게시물 정보에서 가져와서 사용하도록 수정 (해당 항목 삭제)
+        // 작성자 level Img XPath "//div[@class='subinfo']//p[@class='writer']//img
+        // 작성자 nick XPath "//div[@class='subinfo']//span"
         // 작성글 내용 XPath "//div[@class='content']
-        // 추천수 Xpath "//p[@class='score']  게시물 정보에서 가져와서 사용하도록 수정 (해당 항목 삭제)
+        // 추천수 Xpath "//p[@class='score']
         let title = doc.searchWithXPathQuery("//div[@class='topinfo']//p[@class='title']")
         detail.title = title[0].content.description.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         

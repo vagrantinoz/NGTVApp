@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AFNetworkActivityIndicatorManager.sharedManager().enabled = true
         let login = NGTVHTTPAFNetworking()
-        login.login("userid", passwd: "userpassword")
+        login.login("user", passwd: "userpassword")
         return true
     }
 
